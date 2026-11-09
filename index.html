@@ -64,6 +64,7 @@
 
       <!-- Ficha técnica completa (datos de kovemotocolombia.co/es/modelos/450rr) -->
       <div class="ficha-tecnica" id="ficha-tecnica" hidden>
+        <div class="ficha-tecnica__barra"><button class="volver" id="cerrar-ficha" type="button">← Volver a la moto</button><span>Ficha técnica · 450RR</span></div>
         <article class="lamina" aria-label="Plano técnico de la KOVE 450RR">
           <header class="lamina__cabeza">
             <div>
@@ -149,6 +150,10 @@
             <a href="https://kovemotocolombia.co/api/ficha-tecnica/450rr" target="_blank" rel="noopener">Ficha oficial en PDF ↗</a></p>
         </div>
       </div>
+      <button class="ver-puntos" id="ver-puntos" type="button" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="ojo" d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle class="ojo" cx="12" cy="12" r="3"/><path class="tachado" d="M4 4l16 16"/></svg>
+        <span>Ocultar detalles</span>
+      </button>
       <p class="pista-giro" id="pista-giro"><span aria-hidden="true">⟲</span> Arrastra para girarla</p>
       <div class="angulo" aria-hidden="true"><span id="angulo-aguja"></span></div>
     </div>
@@ -164,6 +169,14 @@
         <div><dt>Velocidad máx.</dt><dd>220 km/h</dd></div>
         <div><dt>Peso</dt><dd>165 kg</dd></div>
       </dl>
+      <div class="colores" role="radiogroup" aria-labelledby="t-colores">
+        <p class="colores__titulo" id="t-colores">Color <b id="color-nombre">Negro</b></p>
+        <div class="colores__opciones">
+          <button type="button" role="radio" aria-checked="true" data-color="Negro" style="--c:#16191c" aria-label="Negro"></button>
+          <button type="button" role="radio" aria-checked="false" data-color="Blanco" style="--c:#eef0f1" aria-label="Blanco"></button>
+        </div>
+        <p class="colores__nota" id="color-nota" role="status"></p>
+      </div>
       <p class="detalle__nota">Toca los puntos sobre la moto para conocer cada pieza.</p>
       <div class="detalle__acciones">
         <button class="boton" type="button" data-asesor="450RR">Hablar con un asesor</button>

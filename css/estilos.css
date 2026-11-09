@@ -583,7 +583,10 @@ body.en-detalle .asesor-flotante { opacity: 0; pointer-events: none; }
 @media (max-width: 700px) {
   .lamina { padding: 22px 16px 16px; }
   .lamina__specs { grid-template-columns: minmax(0, 1fr); }
-  .lamina__principal { padding: 34px 10px 0 44px; }
+  .lamina__principal { padding: 34px 6px 0 84px; }
+  .vista--lado .vista__img { margin-left: 78px; width: calc(100% - 78px); }
+  .vista--lado .cota--h:last-of-type { bottom: -68px !important; }
+  .vista--lado { padding-bottom: 100px; }
   .lamina__vistas { grid-template-columns: minmax(0, 1fr); }
   .vista { border-left: 0; border-top: 1px solid var(--linea); }
   .vista:first-child { border-top: 0; }
@@ -694,4 +697,58 @@ body.en-detalle .asesor-flotante { opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .raton::after { animation: none; }
+}
+
+/* Ocultar los puntos para ver la moto limpia */
+.ver-puntos {
+  position: absolute; top: 72px; right: 20px; z-index: 3;
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 11px;
+  border: 0; border-radius: 999px; cursor: pointer;
+  background: rgba(255,255,255,.9); color: #14191d; font: 600 13px/1 var(--f-texto);
+  box-shadow: 0 4px 14px rgba(20,25,29,.15); transition: background .2s, color .2s, opacity .2s;
+}
+.ver-puntos:hover { background: #fff; }
+.ver-puntos:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.ver-puntos svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.ver-puntos .tachado { opacity: 0; transition: opacity .2s; }
+.ver-puntos[aria-pressed="true"] { background: #14191d; color: #fff; }
+.ver-puntos[aria-pressed="true"] .tachado { opacity: 1; }
+.detalle__escenario.sin-puntos .puntos,
+.detalle__escenario.sin-puntos .tarjeta { opacity: 0; visibility: hidden; transition: opacity .25s, visibility 0s .25s; }
+.puntos { transition: opacity .25s; }
+.ver-puntos.apagado { opacity: 0; pointer-events: none; }
+
+/* Colores (por ahora la 450RR gira solo en negro) */
+.colores { display: grid; gap: 8px; }
+.colores__titulo { margin: 0; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #6b757c; }
+.colores__titulo b { margin-left: 6px; color: #14191d; letter-spacing: .04em; font-weight: 600; }
+.colores__opciones { display: flex; gap: 10px; }
+.colores__opciones button {
+  width: 34px; height: 34px; padding: 0; border-radius: 50%; cursor: pointer;
+  background: var(--c); border: 2px solid #f4f6f7; box-shadow: 0 0 0 1.5px #b6bec5;
+  transition: box-shadow .2s, transform .2s;
+}
+.colores__opciones button:hover { transform: scale(1.06); }
+.colores__opciones button[aria-checked="true"] { box-shadow: 0 0 0 2.5px var(--teal); }
+.colores__opciones button:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; }
+.colores__nota { margin: 0; font-size: 13px; color: #4a545b; min-height: 0; }
+.colores__nota:empty { display: none; }
+
+/* Barra de la ficha: solo en el teléfono, donde la ficha ocupa toda la pantalla */
+.ficha-tecnica__barra { display: none; }
+@media (max-width: 900px) {
+  .ficha-tecnica {
+    position: fixed; inset: 0; z-index: 30; gap: 18px;
+    padding: 0 max(12px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+    overscroll-behavior: contain;
+  }
+  .ficha-tecnica__barra {
+    position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    margin: 0 calc(-1 * max(12px, env(safe-area-inset-left, 0px)));
+    padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 12px;
+    background: rgba(214,218,223,.94); backdrop-filter: blur(8px); border-bottom: 1px solid #c6ccd2;
+  }
+  .ficha-tecnica__barra span { font: 400 1rem/1 var(--f-display); text-transform: uppercase; color: #4a545b; }
+  body.ficha-abierta .barra, body.ficha-abierta .asesor-flotante { visibility: hidden; }
+  .ver-puntos { top: 64px; right: 12px; }
 }

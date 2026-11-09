@@ -302,6 +302,7 @@
   };
   const fichaNodo = $('#ficha-tecnica');
   const botonFicha = $('#ver-ficha');
+  const botonPuntos = $('#ver-puntos');
   const contPestanas = $('#pestanas');
   const tabla = $('#tabla-ficha');
   function verSeccion(nombre) {
@@ -317,11 +318,32 @@
   });
   function mostrarFicha(si) {
     fichaNodo.hidden = !si;
+    document.body.classList.toggle("ficha-abierta", si);
+    if (si) fichaNodo.scrollTop = 0;
     botonFicha.setAttribute('aria-expanded', String(si));
     botonFicha.textContent = si ? 'Volver a la moto' : 'Ficha técnica completa';
-    [lienzo, contPuntos, pista, $('.angulo')].forEach((n) => n.classList.toggle('apagado', si));
+    [lienzo, contPuntos, pista, $('.angulo'), botonPuntos].forEach((n) => n.classList.toggle('apagado', si));
     if (si) mostrarPieza(null);
   }
+  $("#cerrar-ficha").addEventListener("click", () => { mostrarFicha(false); botonFicha.focus(); });
+
+  // Ocultar los puntos para ver la moto limpia
+  function verPuntos(si) {
+    seccion.querySelector(".detalle__escenario").classList.toggle("sin-puntos", !si);
+    botonPuntos.setAttribute("aria-pressed", String(!si));
+    botonPuntos.querySelector("span").textContent = si ? "Ocultar detalles" : "Mostrar detalles";
+    if (!si) mostrarPieza(null);
+  }
+  botonPuntos.addEventListener("click", () => verPuntos(botonPuntos.getAttribute("aria-pressed") === "true"));
+
+  // Colores: por ahora solo hay giro en negro; el blanco queda listo para sus fotos
+  const colores = [...document.querySelectorAll(".colores [data-color]")];
+  colores.forEach((b) => b.addEventListener("click", () => {
+    colores.forEach((o) => o.setAttribute("aria-checked", String(o === b)));
+    $("#color-nombre").textContent = b.dataset.color;
+    $("#color-nota").textContent = b.dataset.color === "Negro" ? "" : "Demo: en la versión final la moto gira en " + b.dataset.color.toLowerCase() + ".";
+  }));
+
   botonFicha.addEventListener('click', () => mostrarFicha(fichaNodo.hidden));
   tarjeta.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirAmpliada(); } });
   $('#volver').addEventListener('click', () => mostrarFicha(false));
