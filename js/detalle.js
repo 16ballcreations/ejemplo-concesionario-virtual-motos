@@ -348,5 +348,5 @@
   tarjeta.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirAmpliada(); } });
   $('#volver').addEventListener('click', () => mostrarFicha(false));
 
-  window.__koveDetalle = { abrir, cerrar, set angulo(v) { angulo = v; tocado = true; dibujar(); } };
+  window.__koveDetalle = { abrir, cerrar, ficha: FICHA, set angulo(v) { angulo = v; tocado = true; dibujar(); } };
 })();
