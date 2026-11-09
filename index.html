@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KOVE · Concesionario virtual</title>
+<meta name="description" content="Propuesta de 16 Ball Creations para KOVE Colombia: un concesionario virtual que se recorre como una tienda real.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Gantari:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<header class="barra">
+  <img class="barra__logo" src="media/marca/kove-logo-blanco.svg" alt="KOVE">
+  <span class="barra__nota">Concesionario virtual · concepto no oficial</span>
+</header>
+
+<main>
+  <section class="entrada" id="entrada" aria-label="Entrada al concesionario">
+    <div class="escena">
+      <canvas class="escena__lienzo" id="lienzo" aria-hidden="true"></canvas>
+      <div class="escena__velo" id="velo"></div>
+
+      <img class="letrero" id="letrero" src="media/marca/kove-logo-blanco.svg" alt="">
+
+      <div class="intro" id="intro">
+        <p class="intro__marca">KOVE Colombia</p>
+        <h1 class="intro__titulo">La moto que buscas<br>te está esperando adentro.</h1>
+        <p class="intro__texto">Entra, recorre el salón y mírala de cerca, como si estuvieras aquí.</p>
+        <button class="boton" id="entrar" type="button">Entrar</button>
+        <p class="intro__pista"><span class="raton" aria-hidden="true"></span>o baja para cruzar la puerta</p>
+      </div>
+
+      <div class="salon" id="salon" aria-hidden="true">
+        <div class="salon__encabezado">
+          <p class="salon__eyebrow">El salón</p>
+          <h2 class="salon__titulo">Elige la tuya.</h2>
+          <p class="salon__texto">Toca una moto para conocerla.</p>
+        </div>
+        <div class="motos" id="motos"></div>
+      </div>
+
+      <div class="cargando" id="cargando">
+        <img src="media/marca/kove-logo-blanco.svg" alt="">
+        <div class="cargando__barra"><span id="cargando-avance"></span></div>
+      </div>
+
+      <div class="progreso" aria-hidden="true"><span id="progreso"></span></div>
+    </div>
+  </section>
+
+  <!-- La moto a detalle: se abre desde la ficha del salón -->
+  <section class="detalle" id="detalle" aria-label="450RR a detalle" hidden>
+    <div class="detalle__escenario">
+      <canvas class="detalle__lienzo" id="giro" aria-label="Fotos de la 450RR girando. Arrastra para girarla."></canvas>
+      <div class="puntos" id="puntos"></div>
+      <div class="tarjeta" id="tarjeta" role="button" tabindex="0" aria-label="Ver la pieza en grande" hidden>
+        <img class="tarjeta__icono" id="tarjeta-icono" src="" alt="">
+        <div><b id="tarjeta-titulo"></b><p id="tarjeta-texto"></p><span class="tarjeta__ampliar">Ver en grande ↗</span></div>
+      </div>
+
+      <!-- Ficha técnica completa (datos de kovemotocolombia.co/es/modelos/450rr) -->
+      <div class="ficha-tecnica" id="ficha-tecnica" hidden>
+        <article class="lamina" aria-label="Plano técnico de la KOVE 450RR">
+          <header class="lamina__cabeza">
+            <div>
+              <img class="lamina__logo" src="media/marca/kove-logo-blanco.svg" alt="KOVE">
+              <h3 class="lamina__titulo"><span class="lamina__barra" aria-hidden="true"></span>450RR</h3>
+              <p class="lamina__sub">Plano técnico</p>
+            </div>
+            <dl class="lamina__specs">
+              <div><dt>Motor</dt><dd>4 cilindros en línea, DOHC, 16 válvulas</dd></div>
+              <div><dt>Cilindraje</dt><dd>443 cc</dd></div>
+              <div><dt>Potencia</dt><dd>69,73 HP @ 13.000 rpm</dd></div>
+              <div><dt>Torque</dt><dd>39 Nm @ 10.500 rpm</dd></div>
+              <div><dt>Transmisión</dt><dd>6 velocidades</dd></div>
+              <div><dt>Peso</dt><dd>165 kg</dd></div>
+              <div><dt>Tanque</dt><dd>14–15 L</dd></div>
+              <div><dt>Vel. máxima</dt><dd>220 km/h</dd></div>
+            </dl>
+            <div class="lamina__sello">
+              <p>Sport · campeona<br>WorldSSP300 2025</p>
+              <p class="lamina__color"><span aria-hidden="true"></span>Negro</p>
+            </div>
+          </header>
+
+          <figure class="lamina__principal">
+            <div class="vista__img">
+              <img src="media/plano/tres-cuartos.webp" alt="450RR vista de tres cuartos">
+              <span class="cota cota--h" style="left:0;right:0;top:-7%"><i>2.015 mm</i><small>largo total</small></span>
+              <span class="cota cota--v" style="top:0;bottom:0;left:-9%"><i>1.090 mm</i><small>alto total</small></span>
+            </div>
+          </figure>
+
+          <div class="lamina__vistas">
+            <figure class="vista">
+              <figcaption>Frente</figcaption>
+              <div class="vista__img vista__img--alta">
+                <img src="media/plano/frente.webp" alt="450RR vista frontal">
+                <span class="cota cota--h" style="left:0;right:0;bottom:-11%"><i>740 mm</i><small>ancho</small></span>
+              </div>
+            </figure>
+            <figure class="vista vista--lado">
+              <figcaption>Lado</figcaption>
+              <div class="vista__img">
+                <img src="media/plano/lado.webp" alt="450RR vista lateral">
+                <span class="cota cota--v" style="top:29.4%;bottom:0;left:-5%"><i>780–795 mm</i><small>asiento</small></span>
+                <span class="cota cota--h" style="left:14.5%;right:14.5%;bottom:-11%"><i>1.385 mm</i><small>entre ejes</small></span>
+                <span class="cota cota--h" style="left:0;right:0;bottom:-24%"><i>2.015 mm</i><small>largo</small></span>
+              </div>
+            </figure>
+            <figure class="vista">
+              <figcaption>Trasera</figcaption>
+              <div class="vista__img vista__img--alta">
+                <img src="media/plano/trasera.webp" alt="450RR vista trasera">
+                <span class="cota cota--h" style="left:0;right:0;bottom:-11%"><i>740 mm</i><small>ancho</small></span>
+              </div>
+            </figure>
+          </div>
+
+          <ul class="lamina__extra">
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 28V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v22M6 28h16M20 11h3a2 2 0 0 1 2 2v9a2 2 0 0 0 4 0V12l-4-4M11 9h6"/></svg>
+              <div><b>Tanque</b><span>14–15 L</span></div></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="3"/><path d="M16 4v9M16 19v9M4 16h9M19 16h9"/></svg>
+              <div><b>Llantas</b><span>120/70 R17 · 160/60 R17 radiales MAXXIS</span></div></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3v5M16 24v5M11 8h10v16H11zM11 12l10 3M11 16l10 3M11 20l10 3"/></svg>
+              <div><b>Suspensión</b><span>Invertida Ø41 mm ajustable · mono con depósito externo</span></div></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="5"/><path d="M9 8l2 2M23 8l-2 2M9 24l2-2M23 24l-2-2"/></svg>
+              <div><b>Frenos</b><span>Doble disco 300 mm radial · disco 220 mm · ABS doble canal</span></div></li>
+          </ul>
+
+          <footer class="lamina__rotulo">
+            <div><small>Lámina</small><b>KOVE 450RR · plano técnico</b></div>
+            <div><small>Unidades</small><b>mm</b></div>
+            <div><small>N.º</small><b>450RR-001</b></div>
+            <div><small>Fecha</small><b>11 / 2026</b></div>
+            <div><small>Rev.</small><b>A</b></div>
+          </footer>
+        </article>
+
+        <div class="ficha-tecnica__datos">
+          <h4 class="ficha-tecnica__h">Todos los datos</h4>
+          <div class="pestanas" role="tablist" aria-label="Secciones de la ficha técnica" id="pestanas"></div>
+          <dl class="tabla" id="tabla-ficha"></dl>
+          <p class="ficha-tecnica__nota">Datos publicados por KOVE Colombia. Especificaciones sujetas a homologación y disponibilidad.
+            <a href="https://kovemotocolombia.co/api/ficha-tecnica/450rr" target="_blank" rel="noopener">Ficha oficial en PDF ↗</a></p>
+        </div>
+      </div>
+      <p class="pista-giro" id="pista-giro"><span aria-hidden="true">⟲</span> Arrastra para girarla</p>
+      <div class="angulo" aria-hidden="true"><span id="angulo-aguja"></span></div>
+    </div>
+
+    <aside class="detalle__panel">
+      <button class="volver" id="volver" type="button">← Volver al salón</button>
+      <p class="detalle__eyebrow">Sport · Campeona WorldSSP300 2025</p>
+      <h2 class="detalle__titulo">KOVE 450RR</h2>
+      <p class="detalle__precio">Desde <b>$ 36.490.000</b> <span>precio de referencia</span></p>
+      <dl class="datos">
+        <div><dt>Motor</dt><dd>4 cilindros · 443 cc</dd></div>
+        <div><dt>Potencia</dt><dd>69,7 HP a 13.000 rpm</dd></div>
+        <div><dt>Velocidad máx.</dt><dd>220 km/h</dd></div>
+        <div><dt>Peso</dt><dd>165 kg</dd></div>
+      </dl>
+      <p class="detalle__nota">Toca los puntos sobre la moto para conocer cada pieza.</p>
+      <div class="detalle__acciones">
+        <button class="boton" type="button" data-asesor="450RR">Hablar con un asesor</button>
+        <button class="boton boton--linea" type="button" id="ver-ficha" aria-expanded="false">Ficha técnica completa</button>
+        <a class="reservar" href="https://kovemotocolombia.co/es/reserva" target="_blank" rel="noopener">Sepárala con $ 500.000 ↗</a>
+      </div>
+    </aside>
+  </section>
+
+  <!-- Encuentra tu concesionario -->
+  <section class="concesionarios" id="concesionarios" aria-labelledby="t-concesionarios">
+    <div class="concesionarios__panel">
+      <p class="salon__eyebrow">Red KOVE Colombia</p>
+      <h2 id="t-concesionarios">Encuentra tu concesionario</h2>
+      <div class="pestanas pestanas--oscuras" role="tablist" aria-label="Tipo de sede">
+        <button type="button" role="tab" aria-selected="true" data-tipo="vitrina">Vitrinas KOVE</button>
+        <button type="button" role="tab" aria-selected="false" data-tipo="posventa">Posventa</button>
+      </div>
+      <label class="buscar" for="buscar-sede">
+        <span class="sr">Buscar por ciudad o barrio</span>
+        <input id="buscar-sede" type="search" placeholder="Busca tu ciudad o barrio" autocomplete="off">
+      </label>
+      <p class="sedes__conteo" id="sedes-conteo" role="status"></p>
+      <ul class="sedes" id="sedes"></ul>
+      <p class="sedes__fuente">Sedes y estados según kovemotocolombia.co/es/sedes. En la demo, los pines del mapa son aproximados.</p>
+    </div>
+    <div class="concesionarios__mapa" id="mapa" aria-label="Mapa de sedes KOVE"></div>
+  </section>
+
+  <!-- Equipo de carrera e hitos de la marca (kovemotocolombia.co/es/equipo y /es/historia) -->
+  <section class="carrera" id="carrera" aria-labelledby="t-carrera">
+    <div class="carrera__interior">
+      <header class="carrera__cabeza">
+        <div>
+          <p class="salon__eyebrow">Equipo de carrera KOVE</p>
+          <h2 id="t-carrera">Lo que se prueba en el Dakar y en la pista llega a tu moto.</h2>
+        </div>
+        <ul class="carrera__cifras">
+          <li><b>2023</b><span>debut en el Dakar</span></li>
+          <li><b>2025</b><span>título mundial WorldSSP300</span></li>
+          <li><b>3</b><span>victorias de etapa Rally2 en el Dakar 2026</span></li>
+        </ul>
+      </header>
+
+      <div class="disciplinas">
+        <article class="disciplina">
+          <img src="media/marca-kove/dakar-45-pista.webp" alt="KOVE 450 Rally en el Dakar" loading="lazy">
+          <div class="disciplina__texto">
+            <p class="disciplina__tag">Rally raid y todoterreno</p>
+            <h3>Dakar · Rally2</h3>
+            <p>El Dakar, el Rallye du Maroc, el Taklimakan, el ISDE y el Red Bull Romaniacs. Es la disciplina que respalda la línea <b>Rally</b>.</p>
+            <p class="disciplina__modelo">En Colombia: <b>450 Rally</b></p>
+          </div>
+        </article>
+        <article class="disciplina">
+          <img src="media/marca-kove/assen-66.webp" alt="KOVE 450RR en Assen, WorldSPB" loading="lazy">
+          <div class="disciplina__texto">
+            <p class="disciplina__tag">Ruta y circuito</p>
+            <h3>WorldSSP300 · WorldSPB</h3>
+            <p>El Mundial de Supersport 300, el Campeonato del Mundo FIM Sportbike y el British Superbike. Es la disciplina que respalda la línea <b>deportiva</b>.</p>
+            <p class="disciplina__modelo">En Colombia: <b>450RR</b> y <b>350RR</b></p>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="hitos__titulo">Hitos de la marca</h3>
+      <ol class="hitos" id="hitos">
+        <li class="hito hito--carrera"><time>2023</time><b>Debut en el Dakar</b><p>La 450 Rally termina la prueba con sus tres motos de fábrica. La 350RR entra al WSBK SSP300.</p></li>
+        <li class="hito hito--carrera"><time>2024</time><b>Primera victoria en Jerez</b><p>Primera victoria de una marca china en el WSBK SSP300, en la carrera 2. En el Dakar corre en Rally2 y Original by Motul.</p></li>
+        <li class="hito hito--carrera hito--grande"><time>2025</time><b>Campeona del mundo</b><p>Beñat Fernández gana el WorldSSP300 sobre la KOVE 321 RR-S: primer título mundial de la categoría para una marca china. KOVE Italia corre el ISDE con motos de rally.</p></li>
+        <li class="hito hito--carrera"><time>Ene 2026</time><b>Tres etapas en el Dakar</b><p>La 450 Rally EX gana tres etapas en Rally2: primera marca china en ganar etapas del Dakar.</p></li>
+        <li class="hito hito--carrera"><time>Abr 2026</time><b>Récord en Assen</b><p>La 450RR marca 1'42.190, récord de vuelta de la categoría en el Mundial FIM Sportbike.</p></li>
+        <li class="hito hito--marca"><time>May 2026</time><b>Mes de la Calidad</b><p>La planta de Chengdú lanza su campaña «La calidad primero, artesanía para mejores productos».</p></li>
+        <li class="hito hito--colombia"><time>Jun 2026</time><b>Llega a Colombia</b><p>Carrera Motos S.A.S. se convierte en importador y distribuidor exclusivo de KOVE en el país.</p></li>
+        <li class="hito hito--colombia"><time>Ago 2026</time><b>Respaldo de fábrica</b><p>KOVE publica en kovemoto.com a Carrera Motos como su representante oficial en Colombia.</p></li>
+        <li class="hito hito--colombia"><time>Oct 2026</time><b>Expo 2 Ruedas</b><p>Primera presentación de la gama en Corferias, Bogotá.</p></li>
+        <li class="hito hito--colombia hito--futuro"><time>Mar 2027</time><b>Primeras entregas</b><p>Desde el 15 de marzo, para las primeras 1.000 KOVE reservadas.</p></li>
+      </ol>
+      <p class="hitos__leyenda"><span class="punto-l punto-l--carrera"></span>Competición <span class="punto-l punto-l--marca"></span>Marca <span class="punto-l punto-l--colombia"></span>Colombia</p>
+    </div>
+  </section>
+
+  <!-- Noticias (kovemotocolombia.co, rediseñadas) -->
+  <section class="noticias" id="noticias" aria-labelledby="t-noticias">
+    <div class="noticias__interior">
+      <header class="noticias__cabeza">
+        <div>
+          <p class="salon__eyebrow">Noticias</p>
+          <h2 id="t-noticias">Lo último de KOVE y Carrera Motos</h2>
+        </div>
+        <div class="pestanas pestanas--oscuras" role="tablist" aria-label="Filtrar noticias" id="filtro-noticias">
+          <button type="button" role="tab" aria-selected="true" data-cat="todas">Todas</button>
+          <button type="button" role="tab" aria-selected="false" data-cat="colombia">Colombia</button>
+          <button type="button" role="tab" aria-selected="false" data-cat="competicion">Competición</button>
+          <button type="button" role="tab" aria-selected="false" data-cat="marca">Marca</button>
+        </div>
+      </header>
+      <div class="noticias__grilla" id="noticias-grilla"></div>
+    </div>
+  </section>
+
+  <section class="despues" aria-labelledby="t-propuesta">
+    <div class="despues__interior">
+      <div class="propuesta__intro">
+        <div>
+          <p class="salon__eyebrow">Propuesta para KOVE Colombia</p>
+          <h2 id="t-propuesta">Las vitrinas abren en 2027. Esta puede abrir ya.</h2>
+        </div>
+        <p class="propuesta__lede">Hoy quien quiere una KOVE en Colombia la reserva en línea y espera la entrega, sin poder verla en persona.
+          El concesionario virtual le deja recorrer el salón, girar la moto y hablar con un asesor
+          mientras la Megasala y las demás sedes terminan su obra.</p>
+      </div>
+
+      <ul class="cifras" aria-label="KOVE Colombia hoy">
+        <li><b>6</b><span>modelos de 344 a 799 cc, en cuatro familias: Naked, Sport, Rally y ADV</span></li>
+        <li><b>5</b><span>vitrinas registradas en Bogotá, Medellín y Cali, todas en obra o próximamente</span></li>
+        <li><b>$ 500.000</b><span>para separar la moto en línea; la fecha y hora de pago fijan el turno de entrega</span></li>
+        <li><b>15 mar 2027</b><span>inicio de entregas para las primeras 1.000 KOVE reservadas</span></li>
+      </ul>
+
+      <h3 class="propuesta__sub">Cada parte del recorrido se conecta con lo que KOVE ya ofrece</h3>
+      <ol class="pasos">
+        <li><div><b>Entrada y salón.</b> La fachada y las motos sobre pedestales, como la Megasala de la Av. Primera de Mayo antes de abrir. En la versión final, la gama completa de seis modelos.</div></li>
+        <li><div><b>La moto a detalle.</b> Giro de 360° con las fotos oficiales de cada modelo y las piezas que la diferencian: el tetracilíndrico de la 450RR, la horquilla ajustable, la pantalla TFT.</div></li>
+        <li><div><b>Ficha técnica.</b> Los mismos datos que publica kovemotocolombia.co, con medidas sobre el plano y el PDF oficial a un toque.</div></li>
+        <li><div><b>Hablar con un asesor.</b> WhatsApp de la sede con la moto ya mencionada en el mensaje, como hace hoy el sitio, y el estudio de crédito con Avanza que hoy guía un asesor.</div></li>
+        <li><div><b>Reservar.</b> De la moto a «Sepárala con $ 500.000» sin perder el hilo: el visitante llega a la reserva sabiendo qué moto quiere.</div></li>
+        <li><div><b>Encontrar la sede.</b> Cada vitrina con su estado real, dirección y cómo llegar, lista para cambiar a «Abierta» el día que abra.</div></li>
+      </ol>
+
+      <h3 class="propuesta__sub">El respaldo que el recorrido pone a la vista</h3>
+      <ul class="respaldo">
+        <li><b>Importador oficial</b><span>Carrera Motos S.A.S., distribuidor exclusivo de KOVE en Colombia desde junio de 2026.</span></li>
+        <li><b>Garantía de fábrica</b><span>2 años o 30.000 km en modelos de 250 cc en adelante (Rally y Off-Road tienen plazo propio), más la garantía legal.</span></li>
+        <li><b>Mantenimiento incluido</b><span>Las primeras 4 revisiones sin costo, o un año desde la entrega.</span></li>
+        <li><b>Herencia de competición</b><span>Campeona del mundo WorldSSP300 2025 y tres victorias de etapa en el Dakar 2026.</span></li>
+      </ul>
+
+      <p class="firma">Propuesta de 16 Ball Creations para KOVE Colombia · datos de kovemotocolombia.co consultados el 9 de noviembre de 2026 · fotos oficiales de kovemotocolombia.co y kovemoto.com</p>
+    </div>
+  </section>
+</main>
+
+<!-- Footer de kovemotocolombia.co -->
+<footer class="pie">
+  <div class="pie__interior">
+    <div class="pie__marca">
+      <img src="media/marca/kove-logo-blanco.svg" alt="KOVE" class="pie__logo">
+      <p class="pie__lema">Focus on performance</p>
+      <p class="pie__importa">Importado por</p>
+      <img src="media/marca/carreramotos-blanco.webp" alt="Carrera Motos" class="pie__carrera">
+    </div>
+    <nav class="pie__col" aria-label="Navegación">
+      <h3>Navegación</h3>
+      <ul>
+        <li><a href="https://kovemotocolombia.co/es/modelos" target="_blank" rel="noopener">Modelos</a></li>
+        <li><a href="https://kovemotocolombia.co/es/precios" target="_blank" rel="noopener">Precios</a></li>
+        <li><a href="https://kovemotocolombia.co/es/financiacion" target="_blank" rel="noopener">Financiación</a></li>
+        <li><a href="https://kovemotocolombia.co/es/modelos/comparar" target="_blank" rel="noopener">Comparar modelos</a></li>
+        <li><a href="https://kovemotocolombia.co/es/por-que-kove" target="_blank" rel="noopener">Por qué KOVE</a></li>
+        <li><a href="https://kovemotocolombia.co/es/nosotros" target="_blank" rel="noopener">Quiénes somos</a></li>
+        <li><a href="https://kovemotocolombia.co/es/posventa" target="_blank" rel="noopener">Posventa</a></li>
+        <li><a href="#concesionarios">Sedes</a></li>
+        <li><a href="https://kovemotocolombia.co/es/contacto" target="_blank" rel="noopener">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="pie__col">
+      <h3>¿Necesitas ayuda?</h3>
+      <dl class="pie__ayuda">
+        <div><dt>Servicio y garantía</dt><dd>gerenciaposventa@carrera.com.co</dd></div>
+        <div><dt>PQRS</dt><dd>pqrs.motos@carrera.com.co</dd></div>
+      </dl>
+      <p class="pie__dir">Centro Comercial Carrera, Av. Américas #50-15, Bogotá D.C.<br>Lunes a viernes de 8:00 a 18:00 · Sábados de 9:00 a 14:00</p>
+    </div>
+    <div class="pie__col">
+      <h3>Reserva tu KOVE</h3>
+      <a class="boton pie__reserva" href="https://kovemotocolombia.co/es/reserva" target="_blank" rel="noopener">Sepárala con $ 500.000</a>
+      <ul class="redes" aria-label="Redes de KOVE Colombia">
+        <li><a href="https://www.instagram.com/kovemoto_colombiaa" target="_blank" rel="noopener" aria-label="Instagram (abre en pestaña nueva)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a></li>
+        <li><a href="https://www.tiktok.com/@kove.moto.colombia" target="_blank" rel="noopener" aria-label="TikTok (abre en pestaña nueva)"><svg viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 3 2.5 4.5 5 4.5"/></svg></a></li>
+        <li><a href="https://www.youtube.com/@KOVEMOTO_COLOMBIA" target="_blank" rel="noopener" aria-label="YouTube (abre en pestaña nueva)"><svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/></svg></a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61578802607819" target="_blank" rel="noopener" aria-label="Facebook (abre en pestaña nueva)"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a></li>
+        <li><button type="button" data-asesor="" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.1z"/><path d="M9 9.5c.5 2 2.5 4 4.5 4.5l1.2-1.2 1.8.8v1.6c-4.5.5-8.6-3.6-8.1-8.1h1.6l.8 1.8z"/></svg></button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="pie__base">
+    <p>© 2026 KOVE Colombia · Importado por Carrera Motos S.A.S. · Todos los derechos reservados · <a href="https://kovemotocolombia.co/es/legal" target="_blank" rel="noopener">Legal</a></p>
+    <p>Concesionario virtual: concepto de <a href="https://16ballcreations.com/proyectos/" target="_blank" rel="noopener">16 Ball Creations</a>, no oficial ni afiliado a KOVE. La marca, los logos y las fotos son de sus dueños.</p>
+  </div>
+</footer>
+
+<!-- Hablar con un asesor: siempre a mano desde el salón -->
+<button class="asesor-flotante" id="asesor-flotante" type="button" data-asesor="">
+  <span class="asesor-flotante__punto" aria-hidden="true"></span>Hablar con un asesor
+</button>
+
+<dialog class="asesor" id="asesor" aria-labelledby="asesor-titulo">
+  <form method="dialog" class="asesor__cerrar"><button type="submit" aria-label="Cerrar">×</button></form>
+  <p class="detalle__eyebrow">Asesores KOVE en línea</p>
+  <h2 id="asesor-titulo">Habla con alguien del equipo</h2>
+  <p class="asesor__texto" id="asesor-texto">Una persona de la sede te resuelve dudas, te cotiza y agenda tu prueba de manejo.</p>
+  <ul class="asesor__opciones">
+    <li><button type="button" data-canal="WhatsApp"><b>Escribir por WhatsApp</b><span>Respuesta en minutos, en horario de sede</span></button></li>
+    <li><button type="button" data-canal="Videollamada"><b>Videollamada desde el salón</b><span>Un asesor te muestra la moto en vivo</span></button></li>
+    <li><button type="button" data-canal="Visita"><b>Agendar visita a una vitrina</b><span>Megasala y Palo Blanco en Bogotá; Medellín y Cali muy pronto</span></button></li>
+  </ul>
+  <p class="asesor__demo" id="asesor-demo" role="status">Demo: en la versión final cada opción abre el canal real de la sede.</p>
+</dialog>
+
+<dialog class="ampliar" id="ampliar" aria-labelledby="ampliar-titulo">
+  <form method="dialog" class="asesor__cerrar"><button type="submit" aria-label="Cerrar">×</button></form>
+  <img id="ampliar-img" src="" alt="">
+  <div class="ampliar__pie"><b id="ampliar-titulo"></b><p id="ampliar-texto"></p></div>
+</dialog>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/entrada.js"></script>
+<script src="js/detalle.js"></script>
+<script src="js/asesor.js"></script>
+<script src="js/concesionarios.js"></script>
+<script src="js/noticias.js"></script>
+</body>
+</html>
