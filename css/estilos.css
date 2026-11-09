@@ -763,7 +763,7 @@ body.en-detalle .asesor-flotante { opacity: 0; pointer-events: none; }
 }
 .recorrido__flecha {
   width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.18); cursor: pointer;
-  background: rgba(255,255,255,.06); color: var(--blanco); font: 400 28px/1 var(--f-texto); padding: 0 0 3px;
+  background: rgba(255,255,255,.06); color: var(--blanco); padding: 0; display: grid; place-items: center;
 }
 .recorrido__flecha:active { background: var(--teal); }
 .recorrido__flecha:focus-visible { outline: 2px solid var(--teal-luz); outline-offset: 2px; }
@@ -785,3 +785,4 @@ body.en-detalle .asesor-flotante { opacity: 0; pointer-events: none; }
 .salon--recorrido .moto.elegida .moto__boton { filter: drop-shadow(0 6px 10px rgba(0,0,0,.5)) drop-shadow(0 0 16px rgba(63,208,207,.45)); }
 /* el panel ya trae el asesor: el botón flotante se guarda mientras el salón está en pantalla */
 body.salon-en-pantalla:has(.salon--recorrido) .asesor-flotante { opacity: 0; pointer-events: none; }
+.recorrido__flecha svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
