@@ -37,6 +37,8 @@
   let cargados = 0;
   let actual = 0, objetivo = 0, ultimoDibujado = -1;
   let caja = { dx: 0, dy: 0, dw: 0, dh: 0 };
+  let base = { dx: 0 };            // posición centrada; en el teléfono la cámara se corre desde aquí
+  let paneo = 0, paneoMeta = 0, enSalon = 0;
 
   // Motos en el DOM
   const DETALLE = { '450rr': true };   // motos con vista a detalle lista
@@ -56,6 +58,7 @@
           : `<small>Vista a detalle muy pronto</small>`) +
       `</div>`;
     d.querySelector('.moto__boton').addEventListener('click', () => {
+      if (recorrido) { elegir(ORDEN.indexOf(MOTOS.indexOf(m))); return; }
       const abierta = d.classList.contains('abierta');
       nodosMoto.forEach((n) => n.classList.remove('abierta'));
       if (!abierta) d.classList.add('abierta');
@@ -97,7 +100,9 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     const escala = Math.max(w / ANCHO, h / ALTO);
     const dw = ANCHO * escala, dh = ALTO * escala;
-    caja = { dx: (w - dw) / 2, dy: (h - dh) / 2, dw, dh };
+    base = { dx: (w - dw) / 2 };
+    caja = { dx: base.dx + paneo, dy: (h - dh) / 2, dw, dh };
+    modoRecorrido(w / dw < 0.6);
     colocarMotos();
     ultimoDibujado = -1;
     dibujar();
@@ -114,6 +119,71 @@
       n.style.top = `${py(m.y)}px`;
     });
   }
+
+  // ---- Recorrido de lado a lado (teléfono) ----
+  const ORDEN = MOTOS.map((m, i) => i).sort((a, b) => MOTOS[a].x - MOTOS[b].x);   // de izquierda a derecha
+  let elegida = ORDEN.indexOf(MOTOS.findIndex((m) => m.id === '800xpro'));
+  let recorrido = false;
+  const panel = $('#recorrido');
+  const puntosRec = $('#recorrido-puntos');
+  ORDEN.forEach(() => puntosRec.appendChild(document.createElement('span')));
+  const textoSalon = $('.salon__texto');
+
+  function modoRecorrido(si) {
+    recorrido = si;
+    panel.hidden = !si;
+    salon.classList.toggle('salon--recorrido', si);
+    textoSalon.textContent = si ? 'Desliza para ver las demás.' : 'Toca una moto para conocerla.';
+    if (si) elegir(elegida, true);
+    else { paneo = paneoMeta = 0; nodosMoto.forEach((n) => n.classList.remove('elegida')); }
+  }
+
+  function metaPaneo() {
+    if (!recorrido) return 0;
+    const w = lienzo.clientWidth;
+    const m = MOTOS[ORDEN[elegida]];
+    const dx = Math.min(0, Math.max(w - caja.dw, w / 2 - (m.x / 100) * caja.dw));
+    return (dx - base.dx) * enSalon;   // mientras corre el video la cámara sigue centrada
+  }
+
+  function aplicarPaneo() {
+    caja.dx = base.dx + paneo;
+    colocarMotos();
+    ultimoDibujado = -1;
+    dibujar();
+  }
+
+  function elegir(k, directo) {
+    elegida = (k + ORDEN.length) % ORDEN.length;
+    const i = ORDEN[elegida], m = MOTOS[i];
+    nodosMoto.forEach((n, x) => n.classList.toggle('elegida', x === i));
+    $('#recorrido-nombre').textContent = m.nombre;
+    $('#recorrido-familia').textContent = m.familia + ' · ' + m.precio;
+    const det = $('#recorrido-detalle');
+    det.disabled = !DETALLE[m.id];
+    det.textContent = DETALLE[m.id] ? 'Verla a detalle' : 'Detalle muy pronto';
+    $('#recorrido-asesor').dataset.asesor = m.nombre;
+    [...puntosRec.children].forEach((p, x) => p.classList.toggle('activo', x === elegida));
+    if (directo) { paneo = metaPaneo(); aplicarPaneo(); }
+    // Si el navegador pausa las animaciones, saltar directo
+    setTimeout(() => { if (performance.now() - ultimoPaso > 120) { paneo = metaPaneo(); aplicarPaneo(); } }, 150);
+  }
+
+  $('#recorrido-antes').addEventListener('click', () => elegir(elegida - 1));
+  $('#recorrido-despues').addEventListener('click', () => elegir(elegida + 1));
+  $('#recorrido-detalle').addEventListener('click', () => {
+    const m = MOTOS[ORDEN[elegida]];
+    if (DETALLE[m.id]) document.dispatchEvent(new CustomEvent('kove:detalle', { detail: { id: m.id } }));
+  });
+  // Deslizar con el dedo sobre el salón (el scroll vertical sigue funcionando)
+  let toque = null;
+  salon.addEventListener('touchstart', (e) => { if (recorrido) toque = { x: e.touches[0].clientX, y: e.touches[0].clientY }; }, { passive: true });
+  salon.addEventListener('touchend', (e) => {
+    if (!toque) return;
+    const dx = e.changedTouches[0].clientX - toque.x, dy = e.changedTouches[0].clientY - toque.y;
+    toque = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.3) elegir(elegida + (dx < 0 ? 1 : -1));
+  }, { passive: true });
 
   function progreso() {
     const r = seccion.getBoundingClientRect();
@@ -164,6 +234,9 @@
 
     // Salón: aparece cuando termina el video
     const oSalon = Math.min(1, Math.max(0, (p - FIN_VIDEO) / 0.08));
+    enSalon = oSalon;
+    const rs = seccion.getBoundingClientRect();
+    document.body.classList.toggle('salon-en-pantalla', oSalon > 0.6 && rs.bottom > window.innerHeight * 0.6);
     salon.style.opacity = String(oSalon);
     salon.classList.toggle('activo', oSalon > 0.6);
     document.body.classList.toggle('en-salon', oSalon > 0.6);
@@ -184,8 +257,13 @@
     // Suavizado: el cuadro se acerca al objetivo sin saltos (directo cuando no hay animación disponible)
     actual = directo ? objetivo : actual + (objetivo - actual) * 0.18;
     if (Math.abs(objetivo - actual) < 0.01) actual = objetivo;
-    dibujar();
     capas(p);
+    // la cámara del salón se desliza hacia la moto elegida
+    paneoMeta = metaPaneo();
+    const antes = paneo;
+    paneo = directo ? paneoMeta : paneo + (paneoMeta - paneo) * 0.14;
+    if (Math.abs(paneoMeta - paneo) < 0.3) paneo = paneoMeta;
+    if (paneo !== antes) aplicarPaneo(); else dibujar();
   }
   function bucle(t) {
     ultimoPaso = t;

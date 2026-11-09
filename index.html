@@ -41,6 +41,21 @@
           <p class="salon__texto">Toca una moto para conocerla.</p>
         </div>
         <div class="motos" id="motos"></div>
+
+        <!-- En el teléfono el salón no cabe a lo ancho: la cámara recorre las motos una por una -->
+        <div class="recorrido" id="recorrido" hidden>
+          <button class="recorrido__flecha" id="recorrido-antes" type="button" aria-label="Moto anterior">‹</button>
+          <div class="recorrido__info" aria-live="polite">
+            <b id="recorrido-nombre"></b>
+            <span id="recorrido-familia"></span>
+            <div class="recorrido__puntos" id="recorrido-puntos" aria-hidden="true"></div>
+          </div>
+          <button class="recorrido__flecha" id="recorrido-despues" type="button" aria-label="Moto siguiente">›</button>
+          <div class="recorrido__acciones">
+            <button class="ficha__accion" id="recorrido-detalle" type="button">Verla a detalle</button>
+            <button class="recorrido__asesor" id="recorrido-asesor" type="button" data-asesor="">Hablar con un asesor</button>
+          </div>
+        </div>
       </div>
 
       <div class="cargando" id="cargando">
