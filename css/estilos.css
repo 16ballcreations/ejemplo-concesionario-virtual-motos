@@ -760,7 +760,9 @@ body.en-detalle .asesor-flotante { opacity: 0; pointer-events: none; }
   display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 6px;
   padding: 10px 8px; border-radius: 16px; row-gap: 8px;
   background: rgba(10,14,17,.86); backdrop-filter: blur(10px); border: 1px solid rgba(63,208,207,.3);
+  opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity .3s, transform .3s;
 }
+.recorrido.visible { opacity: 1; transform: none; pointer-events: auto; }
 .recorrido__flecha {
   width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.18); cursor: pointer;
   background: rgba(255,255,255,.06); color: var(--blanco); padding: 0; display: grid; place-items: center;

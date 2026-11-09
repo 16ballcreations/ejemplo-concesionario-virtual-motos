@@ -235,6 +235,12 @@
     // Salón: aparece cuando termina el video
     const oSalon = Math.min(1, Math.max(0, (p - FIN_VIDEO) / 0.08));
     enSalon = oSalon;
+    // Panel del teléfono: solo cuando las cuatro motos ya están en su pedestal (97 % del recorrido)
+    const panelListo = p >= 0.97;
+    if (panel.classList.contains("visible") !== panelListo) {
+      panel.classList.toggle("visible", panelListo);
+      panel.inert = !panelListo;
+    }
     const rs = seccion.getBoundingClientRect();
     document.body.classList.toggle('salon-en-pantalla', oSalon > 0.6 && rs.bottom > window.innerHeight * 0.6);
     salon.style.opacity = String(oSalon);
