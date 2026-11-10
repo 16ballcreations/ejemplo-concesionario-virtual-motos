@@ -133,7 +133,7 @@ body {
   -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 55%);
           mask-image: linear-gradient(to top, #000 0%, transparent 55%);
 }
-.moto--fondo .moto__boton img { filter: brightness(.68) contrast(1.05) saturate(.85) sepia(.06) blur(.4px); }
+.moto--fondo .moto__boton img { filter: brightness(.8) contrast(1.04) saturate(.9) sepia(.05); }
 .moto__boton:hover, .moto__boton:focus-visible, .moto.abierta .moto__boton {
   filter: drop-shadow(0 6px 10px rgba(0,0,0,.5)) drop-shadow(0 0 16px rgba(63,208,207,.45)); outline: none;
 }

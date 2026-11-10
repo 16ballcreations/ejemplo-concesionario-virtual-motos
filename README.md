@@ -11,6 +11,7 @@ Publicado en https://16ballcreations.github.io/ejemplo-concesionario-virtual-mot
 > El panel «Hablar con un asesor» no envía nada: solo muestra avisos de demo. La página lleva `noindex`.
 
 Sin modelos 3D: el giro de la 450RR son 320 cuadros (`media/giro/450rr`) normalizados con `herramientas/exportar-giro.py`.
+La entrada son 190 cuadros (`media/entrada`) del video de transición fachada → salón; el primero y el último salen de las imágenes 2K de las que se hizo el video: `py -3 herramientas/exportar-entrada.py` (fuentes en `fuentes/entrada-v3`).
 La fachada, el salón y la entrada se generaron con IA (Artlist). Las fuentes pesadas (`fuentes/`) no van al repo.
 
 El modelo 3D de la 450RR (`media/3d/450rr.glb`, visor en `js/visor3d.js`) es una prueba generada con IA desde una foto oficial; se deja a tamaño real con `node herramientas/escalar-glb.mjs <entrada.glb> <salida.glb> 2.015`.

@@ -1,24 +1,28 @@
 // Entrada al concesionario: el video avanza con el scroll, cuadro por cuadro, en un canvas.
 (() => {
-  const TOTAL = 121;                 // cuadros en media/entrada (f000…f120)
+  const TOTAL = 190;                 // cuadros en media/entrada (f000…f189); el primero y el último en 1920 px
   const FIN_VIDEO = 0.82;            // de 0 a este punto del scroll corre el video; luego aparece el salón
-  const ANCHO = 1280, ALTO = 714;    // tamaño de los cuadros
+  const ANCHO = 1280, ALTO = 720;    // proporción de los cuadros (16:9)
 
-  // Banda del letrero en la fachada, en % del cuadro, según el cuadro (medido sobre el video)
+  // Banda del letrero en la fachada, en % del cuadro, según el cuadro (medida siguiendo el marco de luz de la puerta)
   const BANDA = [
-    [0, 22.5, 19.6, 77.5, 30.2],
-    [15, 21.9, 18.2, 78.4, 29.3],
-    [30, 19.3, 11.7, 80.4, 27.1],
-    [45, 15.6, 8.9, 84.3, 22.9],
-    [60, 10.0, 2.0, 90.0, 17.0],
+    [0, 12.5, 7.9, 87.3, 23.6],
+    [10, 11.7, 6.6, 88.2, 22.6],
+    [20, 10.3, 4.3, 89.7, 20.9],
+    [30, 8.4, 1.2, 91.4, 18.7],
+    [40, 6.1, -2.5, 93.7, 15.9],
+    [50, 3.1, -7.3, 96.8, 12.3],
+    [60, -0.6, -12.9, 100.2, 8.2],
+    [70, -5.0, -20.1, 104.7, 2.9],
+    [80, -10.4, -28.5, 109.9, -3.3],
   ];
 
   // Motos sobre los pedestales del último cuadro: centro x, apoyo y y ancho del pedestal, en %
   const MOTOS = [
-    { id: '625x',    nombre: '625 X',    familia: 'Adventure · 581 cc', precio: '$ 38.490.000', x: 36.8, y: 67.2, ancho: 9.2 * 0.95, orden: 1 },
-    { id: '350r',    nombre: '350R',     familia: 'Naked · 344 cc',     precio: '$ 23.490.000', x: 29.6, y: 72.8, ancho: 13.7 * 1.0, orden: 2 },
-    { id: '450rr',   nombre: '450RR',    familia: 'Sport · 443 cc',     precio: '$ 36.490.000', x: 70.1, y: 72.8, ancho: 13.7 * 1.0, orden: 3 },
-    { id: '800xpro', nombre: '800X Pro', familia: 'Adventure · 799 cc', precio: '$ 43.990.000', x: 49.9, y: 78.6, ancho: 18.2 * 1.0, orden: 4 },
+    { id: '625x',    nombre: '625 X',    familia: 'Adventure · 581 cc', precio: '$ 38.490.000', x: 61.3, y: 64.0, ancho: 8.6, orden: 1 },
+    { id: '350r',    nombre: '350R',     familia: 'Naked · 344 cc',     precio: '$ 23.490.000', x: 40.2, y: 64.0, ancho: 8.6, orden: 2 },
+    { id: '450rr',   nombre: '450RR',    familia: 'Sport · 443 cc',     precio: '$ 36.490.000', x: 79.6, y: 82.6, ancho: 17, orden: 3 },
+    { id: '800xpro', nombre: '800X Pro', familia: 'Adventure · 799 cc', precio: '$ 43.990.000', x: 21.0, y: 81.6, ancho: 17, orden: 4 },
   ];
 
   const $ = (s) => document.querySelector(s);
@@ -44,7 +48,7 @@
   const DETALLE = { '450rr': true, '350r': true, '625x': true, '800xpro': true };   // motos con vista a detalle lista
   const nodosMoto = MOTOS.map((m) => {
     const d = document.createElement('div');
-    d.className = 'moto' + (m.orden === 1 ? ' moto--fondo' : '');
+    d.className = 'moto' + (m.orden <= 2 ? ' moto--fondo' : '');
     d.style.zIndex = String(m.orden);
     const src = `media/motos/${m.id}.webp`;
     d.style.setProperty('--recorte', `url("${new URL(src, location.href).href}")`);
@@ -224,7 +228,7 @@
     letrero.style.width = `${(alto * 389.73) / 78.78}px`;
     letrero.style.left = `${px((x1 + x2) / 2)}px`;
     letrero.style.top = `${py((y1 + y2) / 2)}px`;
-    letrero.style.opacity = String(Math.max(0, 1 - Math.max(0, f - 38) / 14));
+    letrero.style.opacity = String(Math.max(0, 1 - Math.max(0, f - 55) / 20));
 
     // Texto de bienvenida: se va en el primer tramo
     const oIntro = Math.max(0, 1 - p / 0.12);
