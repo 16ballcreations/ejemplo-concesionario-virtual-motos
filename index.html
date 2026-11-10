@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Gantari:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/estilos.css?v=202611100915">
+<link rel="stylesheet" href="css/estilos.css?v=202611101000">
 </head>
 <body>
 
@@ -208,6 +208,9 @@
       <div class="detalle__acciones">
         <button class="boton" type="button" data-asesor="450RR">Hablar con un asesor</button>
         <button class="boton boton--linea" type="button" id="ver-ficha" aria-expanded="false">Ficha técnica completa</button>
+        <button class="boton boton--ar" type="button" id="ver-3d" data-modelo="450rr">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l8 4.5v10l-8 4.5-8-4.5V7z"/><path d="M4 7l8 4.5L20 7M12 11.5V21"/></svg>
+          Verla en tu espacio</button>
         <a class="reservar" href="https://kovemotocolombia.co/es/reserva" target="_blank" rel="noopener">Sepárala con $ 500.000 ↗</a>
       </div>
     </aside>
@@ -397,6 +400,30 @@
 </footer>
 
 <!-- Hablar con un asesor: siempre a mano desde el salón -->
+<!-- Visor 3D y realidad aumentada -->
+<dialog class="visor3d" id="visor3d" aria-labelledby="visor3d-titulo">
+  <div class="visor3d__barra">
+    <button class="volver" type="button" id="cerrar-3d">← Volver a la moto</button>
+    <h2 id="visor3d-titulo">450RR en 3D</h2>
+  </div>
+  <div class="visor3d__escena" id="visor3d-escena">
+    <p class="visor3d__cargando" id="visor3d-cargando">Cargando la moto en 3D…</p>
+  </div>
+  <div class="visor3d__pie">
+    <div class="visor3d__ar" id="visor3d-ar" hidden>
+      <button class="boton" type="button" id="activar-ar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M12 7l5 2.8v5.4L12 18l-5-2.8V9.8z"/></svg>
+        Ponerla en mi piso</button>
+      <p>Se abre la cámara: apunta al piso, espera a que aparezca la moto a tamaño real y camina alrededor.</p>
+    </div>
+    <div class="visor3d__qr" id="visor3d-qr" hidden>
+      <div class="visor3d__codigo" id="visor3d-codigo" aria-hidden="true"></div>
+      <p><b>Mírala en tu espacio.</b> Escanea el código con la cámara de tu teléfono: la 450RR aparece a tamaño real (2.015 mm) en el piso de tu casa.</p>
+    </div>
+    <p class="visor3d__nota">Arrastra para girarla y pellizca para acercarte. Modelo 3D de demostración generado con IA a partir de una foto oficial; en la versión final se hace con el escaneo de la moto real.</p>
+  </div>
+</dialog>
+
 <button class="asesor-flotante" id="asesor-flotante" type="button" data-asesor="">
   <span class="asesor-flotante__punto" aria-hidden="true"></span>Hablar con un asesor
 </button>
@@ -422,10 +449,11 @@
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="js/entrada.js?v=202611100915"></script>
-<script src="js/detalle.js?v=202611100915"></script>
-<script src="js/asesor.js?v=202611100915"></script>
-<script src="js/concesionarios.js?v=202611100915"></script>
-<script src="js/noticias.js?v=202611100915"></script>
+<script src="js/entrada.js?v=202611101000"></script>
+<script src="js/visor3d.js?v=202611101000"></script>
+<script src="js/detalle.js?v=202611101000"></script>
+<script src="js/asesor.js?v=202611101000"></script>
+<script src="js/concesionarios.js?v=202611101000"></script>
+<script src="js/noticias.js?v=202611101000"></script>
 </body>
 </html>

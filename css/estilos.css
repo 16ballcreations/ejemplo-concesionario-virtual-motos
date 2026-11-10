@@ -795,3 +795,33 @@ body.salon-en-pantalla:has(.salon--recorrido) .asesor-flotante { opacity: 0; poi
 .ficha-tecnica__descarga .boton { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding-inline: 20px; }
 .ficha-tecnica__descarga svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 @media (max-width: 700px) { .ficha-tecnica__descarga .boton { width: 100%; justify-content: center; } }
+
+/* Visor 3D y realidad aumentada */
+.boton--ar { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #14191d; color: #fff; }
+.boton--ar:hover { background: #222b31; }
+.boton--ar svg, .visor3d svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; flex: none; }
+.visor3d { width: min(1100px, calc(100vw - 32px)); height: min(820px, calc(100dvh - 32px)); max-width: none; max-height: none; padding: 0; border: 0; border-radius: 18px;
+  background: #eceeef; color: #14191d; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; overflow: hidden; }
+.visor3d:not([open]) { display: none; }
+.visor3d::backdrop { background: rgba(5,8,10,.72); backdrop-filter: blur(4px); }
+.visor3d__barra { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #d3d8db; }
+.visor3d__barra h2 { margin: 0; font: 400 1.25rem/1 var(--f-display); text-transform: uppercase; letter-spacing: .03em; }
+.visor3d__barra .volver { margin: 0; }
+.visor3d__escena { position: relative; min-height: 0; background: radial-gradient(ellipse at 50% 70%, #fff 0%, #e3e6e8 70%); }
+.visor3d__escena model-viewer { width: 100%; height: 100%; --poster-color: transparent; }
+.visor3d__cargando { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; font-size: 14px; color: #4a545b; letter-spacing: .04em; }
+.visor3d__pie { display: grid; gap: 10px; padding: 16px 20px 18px; border-top: 1px solid #d3d8db; background: #f6f7f7; }
+.visor3d__ar, .visor3d__qr { display: flex; align-items: center; gap: 16px; }
+.visor3d__ar[hidden], .visor3d__qr[hidden] { display: none; }
+.visor3d__ar .boton { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+.visor3d__ar p, .visor3d__qr p { margin: 0; font-size: 14px; line-height: 1.45; color: #3b454c; }
+.visor3d__codigo { flex: none; width: 112px; height: 112px; padding: 6px; background: #fff; border-radius: 8px; box-shadow: 0 0 0 1px #d3d8db; }
+.visor3d__codigo svg, .visor3d__codigo img { width: 100%; height: 100%; display: block; }
+.visor3d__nota { margin: 0; font-size: 12px; color: #6b757c; }
+@media (max-width: 700px) {
+  .visor3d { width: 100vw; height: 100dvh; border-radius: 0; }
+  .visor3d__barra { padding: calc(10px + env(safe-area-inset-top, 0px)) 14px 10px; }
+  .visor3d__pie { padding: 14px 14px calc(14px + env(safe-area-inset-bottom, 0px)); }
+  .visor3d__ar { flex-direction: column; align-items: stretch; gap: 10px; }
+  .visor3d__ar .boton { justify-content: center; }
+}
