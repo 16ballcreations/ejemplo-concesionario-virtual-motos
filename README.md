@@ -13,6 +13,6 @@ Publicado en https://16ballcreations.github.io/ejemplo-concesionario-virtual-mot
 Sin modelos 3D: el giro de la 450RR son 320 cuadros (`media/giro/450rr`) normalizados con `herramientas/exportar-giro.py`.
 La fachada, el salón y la entrada se generaron con IA (Artlist). Las fuentes pesadas (`fuentes/`) no van al repo.
 
-El PDF del plano técnico (`media/plano/kove-450rr-plano-tecnico.pdf`) sale de la misma lámina de la página: con el servidor corriendo, `node herramientas/pdf-plano.mjs`. Hay que regenerarlo si cambian la lámina o la ficha.
+El PDF del plano técnico (`media/plano/kove-450rr-plano-tecnico.pdf`) es una hoja carta vertical ocupada entera por la lámina de la página: con el servidor corriendo, `node herramientas/pdf-plano.mjs` (`PAPEL=a4` para A4). Hay que regenerarlo si cambia la lámina.
 
 Para verlo en local: `node herramientas/servir.mjs 4390`.

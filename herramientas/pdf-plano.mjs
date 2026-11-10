@@ -1,43 +1,61 @@
-// Genera media/plano/kove-450rr-plano-tecnico.pdf: una hoja A4 horizontal con la lámina del plano técnico,
-// tal como se ve en la página (se toma como imagen nítida para que el PDF no dependa de la impresión del navegador).
+// Genera media/plano/kove-450rr-plano-tecnico.pdf: una hoja vertical de tamaño fijo (carta por defecto)
+// ocupada entera por la lámina del plano técnico, sin márgenes en blanco.
+// La lámina se dibuja con el diseño de escritorio a un ancho que da la proporción de la hoja,
+// y se toma como imagen nítida para que el PDF no dependa de la impresión del navegador.
 // Uso (con el servidor de la demo corriendo):
 //   node herramientas/pdf-plano.mjs [http://localhost:4390/]
+// PAPEL=a4 para A4 (por defecto carta). PREVIA=<carpeta> guarda además la imagen para revisarla.
 // Necesita playwright-core; por defecto lo toma de C:/Dev/16bc-site (variable PLAYWRIGHT para cambiarlo).
-// PREVIA=<carpeta> guarda además la imagen de la lámina para revisarla.
 import { pathToFileURL, fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { writeFileSync } from 'node:fs';
 
 const PW = process.env.PLAYWRIGHT || 'C:/Dev/16bc-site/node_modules/playwright-core/index.mjs';
 const { chromium } = await import(pathToFileURL(PW).href);
 const URL_DEMO = process.argv[2] || 'http://localhost:4390/';
 const SALIDA = join(dirname(fileURLToPath(import.meta.url)), '..', 'media', 'plano', 'kove-450rr-plano-tecnico.pdf');
-const ANCHO_LAMINA = 1340;   // ancho al que se dibuja la lámina (vista de escritorio)
+const PAPELES = { carta: ['215.9mm', '279.4mm', 279.4 / 215.9], a4: ['210mm', '297mm', 297 / 210] };
+const [ANCHO, ALTO, PROPORCION] = PAPELES[(process.env.PAPEL || 'carta').toLowerCase()] || PAPELES.carta;
 
 const navegador = await chromium.launch({ channel: 'msedge' });
+// la ventana se queda en 1500 px para que la lámina use siempre su diseño de escritorio
 const pagina = await navegador.newPage({ viewport: { width: 1500, height: 1000 }, deviceScaleFactor: 2.5 });
 await pagina.goto(URL_DEMO, { waitUntil: 'networkidle' });
 const lamina = await pagina.evaluate(() => document.querySelector('.lamina').outerHTML);
 
-// 1) La lámina sola, a ancho de escritorio, como imagen
 await pagina.setContent(`<!doctype html><html lang="es"><head><meta charset="utf-8"><base href="${URL_DEMO}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Gantari:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="css/estilos.css">
-<style>html,body{margin:0;background:#fff}.caja{width:${ANCHO_LAMINA}px;padding:0}.lamina{box-shadow:none;margin:0}</style>
+<style>html,body{margin:0;background:#fff}.lamina{box-shadow:none;margin:0;box-sizing:border-box}</style>
 </head><body><div class="caja">${lamina}</div></body></html>`, { waitUntil: 'networkidle' });
 await pagina.evaluate(async () => {
   await document.fonts.ready;
   await Promise.all([...document.images].map((i) => i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; })));
 });
-const png = await pagina.locator('.lamina').screenshot({ type: 'png' });
-if (process.env.PREVIA) (await import('node:fs')).writeFileSync(join(process.env.PREVIA, 'lamina.png'), png);
 
-// 2) Una hoja A4 horizontal con la imagen centrada
+// El ancho más angosto en el que la lámina todavía cabe en la proporción de la hoja;
+// lo que falte de alto se reparte entre sus filas.
+const ancho = await pagina.evaluate((prop) => {
+  const caja = document.querySelector('.caja'), lam = document.querySelector('.lamina');
+  let elegido = 1400;
+  for (let w = 1400; w >= 900; w -= 5) {
+    caja.style.width = w + 'px';
+    if (lam.getBoundingClientRect().height / w > prop) break;
+    elegido = w;
+  }
+  caja.style.width = elegido + 'px';
+  lam.style.height = Math.round(elegido * prop) + 'px';
+  return elegido;
+}, PROPORCION);
+
+const png = await pagina.locator('.lamina').screenshot({ type: 'jpeg', quality: 90 });
+if (process.env.PREVIA) writeFileSync(join(process.env.PREVIA, 'lamina.jpg'), png);
+
 await pagina.setContent(`<!doctype html><html><head><style>
-@page { size: 297mm 210mm; margin: 0; }
+@page { size: ${ANCHO} ${ALTO}; margin: 0; }
 html, body { margin: 0; }
-.hoja { width: 297mm; height: 209.5mm; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.hoja img { max-width: calc(297mm - 16mm); max-height: calc(210mm - 16mm); }
-</style></head><body><div class="hoja"><img src="data:image/png;base64,${png.toString('base64')}"></div></body></html>`, { waitUntil: 'load' });
-await pagina.pdf({ path: SALIDA, width: '297mm', height: '210mm', printBackground: true, pageRanges: '1', margin: { top: 0, right: 0, bottom: 0, left: 0 } });
+img { display: block; width: ${ANCHO}; height: calc(${ALTO} - .5mm); }
+</style></head><body><img src="data:image/jpeg;base64,${png.toString('base64')}"></body></html>`, { waitUntil: 'load' });
+await pagina.pdf({ path: SALIDA, width: ANCHO, height: ALTO, printBackground: true, pageRanges: '1', margin: { top: 0, right: 0, bottom: 0, left: 0 } });
 await navegador.close();
-console.log('PDF listo:', SALIDA);
+console.log(`PDF listo (${process.env.PAPEL || 'carta'}, lámina a ${ancho} px):`, SALIDA);
