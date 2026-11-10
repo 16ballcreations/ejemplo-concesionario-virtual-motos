@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Gantari:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/estilos.css?v=202611101000">
+<link rel="stylesheet" href="css/estilos.css?v=202611101400">
 </head>
 <body>
 
@@ -68,113 +68,31 @@
   </section>
 
   <!-- La moto a detalle: se abre desde la ficha del salón -->
-  <section class="detalle" id="detalle" aria-label="450RR a detalle" hidden>
+  <section class="detalle" id="detalle" aria-label="Moto a detalle" hidden>
     <div class="detalle__escenario">
-      <canvas class="detalle__lienzo" id="giro" aria-label="Fotos de la 450RR girando. Arrastra para girarla."></canvas>
+      <canvas class="detalle__lienzo" id="giro" aria-label="Fotos de la moto girando. Arrastra para girarla."></canvas>
       <div class="puntos" id="puntos"></div>
       <div class="tarjeta" id="tarjeta" role="button" tabindex="0" aria-label="Ver la pieza en grande" hidden>
         <img class="tarjeta__icono" id="tarjeta-icono" src="" alt="">
         <div><b id="tarjeta-titulo"></b><p id="tarjeta-texto"></p><span class="tarjeta__ampliar">Ver en grande ↗</span></div>
       </div>
 
-      <!-- Ficha técnica completa (datos de kovemotocolombia.co/es/modelos/450rr) -->
+      <!-- Ficha técnica completa: la llena js/detalle.js con js/motos-datos.js -->
       <div class="ficha-tecnica" id="ficha-tecnica" hidden>
-        <div class="ficha-tecnica__barra"><button class="volver" id="cerrar-ficha" type="button">← Volver a la moto</button><span>Ficha técnica · 450RR</span></div>
+        <div class="ficha-tecnica__barra"><button class="volver" id="cerrar-ficha" type="button">← Volver a la moto</button><span id="ficha-barra-titulo">Ficha técnica</span></div>
         <div class="ficha-tecnica__descarga">
           <p>El plano técnico en una hoja carta, listo para imprimir o compartir.</p>
-          <a class="boton boton--linea" href="media/plano/kove-450rr-plano-tecnico.pdf" download="KOVE-450RR-plano-tecnico.pdf">
+          <a class="boton boton--linea" id="pdf-plano" href="media/plano/kove-450rr-plano-tecnico.pdf" download="KOVE-450RR-plano-tecnico.pdf">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 19h14"/></svg>Descargar PDF
           </a>
         </div>
-        <article class="lamina" aria-label="Plano técnico de la KOVE 450RR">
-          <header class="lamina__cabeza">
-            <div>
-              <img class="lamina__logo" src="media/marca/kove-logo-blanco.svg" alt="KOVE">
-              <h3 class="lamina__titulo"><span class="lamina__barra" aria-hidden="true"></span>450RR</h3>
-              <p class="lamina__sub">Plano técnico</p>
-            </div>
-            <dl class="lamina__specs">
-              <div><dt>Motor</dt><dd>4 cilindros en línea, DOHC, 16 válvulas</dd></div>
-              <div><dt>Cilindraje</dt><dd>443 cc</dd></div>
-              <div><dt>Potencia</dt><dd>69,73 HP @ 13.000 rpm</dd></div>
-              <div><dt>Torque</dt><dd>39 Nm @ 10.500 rpm</dd></div>
-              <div><dt>Transmisión</dt><dd>6 velocidades</dd></div>
-              <div><dt>Peso</dt><dd>165 kg</dd></div>
-              <div><dt>Tanque</dt><dd>14–15 L</dd></div>
-              <div><dt>Vel. máxima</dt><dd>220 km/h</dd></div>
-            </dl>
-            <div class="lamina__sello">
-              <p>Sport · campeona<br>WorldSSP300 2025</p>
-              <p class="lamina__color"><span aria-hidden="true"></span>Negro</p>
-            </div>
-          </header>
-
-          <figure class="lamina__principal">
-            <div class="vista__img">
-              <img src="media/plano/tres-cuartos.webp" alt="450RR vista de tres cuartos">
-              <span class="cota cota--h" style="left:0;right:0;top:-7%"><i>2.015 mm</i><small>largo total</small></span>
-              <span class="cota cota--v" style="top:0;bottom:0;left:-9%"><i>1.090 mm</i><small>alto total</small></span>
-            </div>
-          </figure>
-
-          <div class="lamina__vistas">
-            <figure class="vista">
-              <figcaption>Frente</figcaption>
-              <div class="vista__img vista__img--alta">
-                <img src="media/plano/frente.webp" alt="450RR vista frontal">
-                <span class="cota cota--h" style="left:0;right:0;bottom:-11%"><i>740 mm</i><small>ancho</small></span>
-              </div>
-            </figure>
-            <figure class="vista vista--lado">
-              <figcaption>Lado</figcaption>
-              <div class="vista__img">
-                <img src="media/plano/lado.webp" alt="450RR vista lateral">
-                <span class="cota cota--v" style="top:29.4%;bottom:0;left:-5%"><i>780–795 mm</i><small>asiento</small></span>
-                <span class="cota cota--h" style="left:14.5%;right:14.5%;bottom:-11%"><i>1.385 mm</i><small>entre ejes</small></span>
-                <span class="cota cota--h" style="left:0;right:0;bottom:calc(-11% - 44px)"><i>2.015 mm</i><small>largo</small></span>
-              </div>
-            </figure>
-            <figure class="vista">
-              <figcaption>Trasera</figcaption>
-              <div class="vista__img vista__img--alta">
-                <img src="media/plano/trasera.webp" alt="450RR vista trasera">
-                <span class="cota cota--h" style="left:0;right:0;bottom:-11%"><i>740 mm</i><small>ancho</small></span>
-              </div>
-            </figure>
-          </div>
-
-          <ul class="lamina__extra">
-            <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 4h12v6H10zM12 10v8h8v-8M16 18v5M12 23h8v5h-8z"/></svg>
-              <div><b>Cilindraje</b><span>443 cc tetracilíndrico</span></div></li>
-            <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M18 3L7 18h8l-2 11 12-16h-8z"/></svg>
-              <div><b>Máxima potencia</b><span>69,73 HP @ 13.000 rpm</span></div></li>
-            <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M26 16a10 10 0 1 1-3-7.1M26 4v6h-6"/><circle cx="16" cy="16" r="3"/></svg>
-              <div><b>Torque máximo</b><span>39 Nm @ 10.500 rpm</span></div></li>
-            <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 28V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v22M6 28h16M20 11h3a2 2 0 0 1 2 2v9a2 2 0 0 0 4 0V12l-4-4M11 9h6"/></svg>
-              <div><b>Tanque</b><span>14–15 L</span></div></li>
-            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="3"/><path d="M16 4v9M16 19v9M4 16h9M19 16h9"/></svg>
-              <div><b>Llantas</b><span>120/70 R17 · 160/60 R17 radiales MAXXIS</span></div></li>
-            <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3v5M16 24v5M11 8h10v16H11zM11 12l10 3M11 16l10 3M11 20l10 3"/></svg>
-              <div><b>Suspensión</b><span>Invertida Ø41 mm ajustable · mono con depósito externo</span></div></li>
-            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="5"/><path d="M9 8l2 2M23 8l-2 2M9 24l2-2M23 24l-2-2"/></svg>
-              <div><b>Frenos</b><span>Doble disco 300 mm radial · disco 220 mm · ABS doble canal</span></div></li>
-          </ul>
-
-          <footer class="lamina__rotulo">
-            <div><small>Lámina</small><b>KOVE 450RR · plano técnico</b></div>
-            <div><small>Unidades</small><b>mm</b></div>
-            <div><small>N.º</small><b>450RR-001</b></div>
-            <div><small>Fecha</small><b>11 / 2026</b></div>
-            <div><small>Rev.</small><b>A</b></div>
-          </footer>
-        </article>
+        <article class="lamina" id="lamina" aria-label="Plano técnico"></article>
 
         <div class="ficha-tecnica__datos">
           <h4 class="ficha-tecnica__h">Todos los datos</h4>
           <div class="pestanas" role="tablist" aria-label="Secciones de la ficha técnica" id="pestanas"></div>
           <dl class="tabla" id="tabla-ficha"></dl>
-          <p class="ficha-tecnica__nota">Datos publicados por KOVE Colombia. Especificaciones sujetas a homologación y disponibilidad.
-            <a href="https://kovemotocolombia.co/api/ficha-tecnica/450rr" target="_blank" rel="noopener">Ficha oficial en PDF ↗</a></p>
+          <p class="ficha-tecnica__nota" id="ficha-nota"></p>
         </div>
       </div>
       <button class="ver-puntos" id="ver-puntos" type="button" aria-pressed="false">
@@ -187,27 +105,20 @@
 
     <aside class="detalle__panel">
       <button class="volver" id="volver" type="button">← Volver al salón</button>
-      <p class="detalle__eyebrow">Sport · Campeona WorldSSP300 2025</p>
-      <h2 class="detalle__titulo">KOVE 450RR</h2>
-      <p class="detalle__precio">Desde <b>$ 36.490.000</b> <span>precio de referencia</span></p>
-      <dl class="datos">
-        <div><dt>Motor</dt><dd>4 cilindros · 443 cc</dd></div>
-        <div><dt>Potencia</dt><dd>69,7 HP a 13.000 rpm</dd></div>
-        <div><dt>Velocidad máx.</dt><dd>220 km/h</dd></div>
-        <div><dt>Peso</dt><dd>165 kg</dd></div>
-      </dl>
+      <p class="detalle__eyebrow" id="detalle-eyebrow"></p>
+      <h2 class="detalle__titulo" id="detalle-titulo"></h2>
+      <p class="detalle__precio">Desde <b id="detalle-precio"></b> <span>precio de referencia</span></p>
+      <dl class="datos" id="detalle-datos"></dl>
       <div class="colores" role="radiogroup" aria-labelledby="t-colores">
         <p class="colores__titulo" id="t-colores">Color <b id="color-nombre">Negro</b></p>
-        <div class="colores__opciones">
-          <button type="button" role="radio" aria-checked="true" data-color="Negro" style="--c:#16191c" aria-label="Negro"></button>
-          <button type="button" role="radio" aria-checked="false" data-color="Blanco" style="--c:#eef0f1" aria-label="Blanco"></button>
-        </div>
+        <div class="colores__opciones" id="colores-opciones"></div>
         <p class="colores__nota" id="color-nota" role="status"></p>
       </div>
       <p class="detalle__nota">Toca los puntos sobre la moto para conocer cada pieza.</p>
       <div class="detalle__acciones">
-        <button class="boton" type="button" data-asesor="450RR">Hablar con un asesor</button>
+        <button class="boton" type="button" id="detalle-asesor" data-asesor="450RR">Hablar con un asesor</button>
         <button class="boton boton--linea" type="button" id="ver-ficha" aria-expanded="false">Ficha técnica completa</button>
+        <button class="boton boton--linea" type="button" id="ver-contexto">Por qué elegirla</button>
         <button class="boton boton--ar" type="button" id="ver-3d" data-modelo="450rr">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l8 4.5v10l-8 4.5-8-4.5V7z"/><path d="M4 7l8 4.5L20 7M12 11.5V21"/></svg>
           Verla en tu espacio</button>
@@ -400,6 +311,22 @@
 </footer>
 
 <!-- Hablar con un asesor: siempre a mano desde el salón -->
+<!-- Por qué elegirla: argumentos de la marca con fotos oficiales -->
+<dialog class="contexto" id="contexto" aria-labelledby="contexto-titulo">
+  <div class="contexto__barra">
+    <button class="volver" type="button" id="cerrar-contexto">← Volver a la moto</button>
+    <span>Por qué elegirla</span>
+  </div>
+  <div class="contexto__cuerpo">
+    <header class="contexto__cabeza">
+      <p class="contexto__eyebrow" id="contexto-eyebrow"></p>
+      <h2 id="contexto-titulo"></h2>
+    </header>
+    <div class="contexto__grilla" id="contexto-grilla"></div>
+    <p class="contexto__nota">Fotos y datos publicados por KOVE y medios especializados; cada tarjeta enlaza su fuente. Concepto de 16 Ball Creations, no oficial ni afiliado a KOVE.</p>
+  </div>
+</dialog>
+
 <!-- Visor 3D y realidad aumentada -->
 <dialog class="visor3d" id="visor3d" aria-labelledby="visor3d-titulo">
   <div class="visor3d__barra">
@@ -449,11 +376,12 @@
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="js/entrada.js?v=202611101000"></script>
-<script src="js/visor3d.js?v=202611101000"></script>
-<script src="js/detalle.js?v=202611101000"></script>
-<script src="js/asesor.js?v=202611101000"></script>
-<script src="js/concesionarios.js?v=202611101000"></script>
-<script src="js/noticias.js?v=202611101000"></script>
+<script src="js/motos-datos.js?v=202611101400"></script>
+<script src="js/entrada.js?v=202611101400"></script>
+<script src="js/visor3d.js?v=202611101400"></script>
+<script src="js/detalle.js?v=202611101400"></script>
+<script src="js/asesor.js?v=202611101400"></script>
+<script src="js/concesionarios.js?v=202611101400"></script>
+<script src="js/noticias.js?v=202611101400"></script>
 </body>
 </html>

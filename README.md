@@ -18,3 +18,10 @@ El modelo 3D de la 450RR (`media/3d/450rr.glb`, visor en `js/visor3d.js`) es una
 El PDF del plano técnico (`media/plano/kove-450rr-plano-tecnico.pdf`) es una hoja carta vertical ocupada entera por la lámina de la página: con el servidor corriendo, `node herramientas/pdf-plano.mjs` (`PAPEL=a4` para A4). Hay que regenerarlo si cambia la lámina.
 
 Para verlo en local: `node herramientas/servir.mjs 4390`.
+
+## Datos de las motos
+
+- `js/motos-datos.js` se genera con `node herramientas/datos-motos.mjs`: une lo escrito a mano en `herramientas/motos-base.mjs` (panel, puntos sobre la moto, plano técnico y galería «Por qué elegirla») con la ficha investigada y con fuentes de `fuentes/investigacion/motos.json` (fuera del repo).
+- La 450RR gira con 320 cuadros; la 350R, la 625X y la 800X Pro con las vistas oficiales de KOVE Colombia y kovemoto.com, recortadas con `node herramientas/recortar-vistas.mjs` (`UNION=1` para el giro).
+- Los PDF del plano técnico de las cuatro motos salen con `node herramientas/pdf-plano.mjs` (o solo algunas: `... http://localhost:4390/ 350r,625x`).
+- Fotos de la galería: kovemoto.com y prensa, reducidas con `herramientas/redimensionar.mjs`. Sin licencia publicada: uso de concepto, con aviso de no afiliación.

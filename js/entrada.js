@@ -41,7 +41,7 @@
   let paneo = 0, paneoMeta = 0, enSalon = 0;
 
   // Motos en el DOM
-  const DETALLE = { '450rr': true };   // motos con vista a detalle lista
+  const DETALLE = { '450rr': true, '350r': true, '625x': true, '800xpro': true };   // motos con vista a detalle lista
   const nodosMoto = MOTOS.map((m) => {
     const d = document.createElement('div');
     d.className = 'moto' + (m.orden === 1 ? ' moto--fondo' : '');
