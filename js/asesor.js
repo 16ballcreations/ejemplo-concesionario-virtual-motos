@@ -4,14 +4,17 @@
   const texto = document.getElementById('asesor-texto');
   const estado = document.getElementById('asesor-demo');
   const BASE = 'Una persona de la sede te resuelve dudas, te cotiza y agenda tu prueba de manejo.';
-  let moto = '';
+  let moto = '', cotizacion = '';
 
   document.addEventListener('click', (e) => {
     const b = e.target.closest('[data-asesor]');
     if (!b) return;
     moto = b.dataset.asesor || '';
     const sede = b.dataset.sede || '';
-    texto.textContent = sede && b.dataset.abierta === 'false'
+    cotizacion = b.dataset.cotizacion || '';
+    texto.textContent = cotizacion
+      ? `El asesor recibe tu cotización ya armada (${cotizacion}) y te acompaña en el estudio de crédito.`
+      : sede && b.dataset.abierta === 'false'
       ? `Te comunicamos con el equipo de ${sede}: te avisamos el día que abra y, mientras tanto, te atiende un asesor en línea.`
       : sede
       ? `Te comunicamos con el equipo de ${sede} para que elijas día y hora. ${BASE}`
@@ -25,7 +28,8 @@
   dialogo.addEventListener('click', (e) => {
     const c = e.target.closest('[data-canal]');
     if (c) {
-      const mensaje = moto ? `«Hola, me interesa la KOVE ${moto}»` : '«Hola, quiero hablar con un asesor»';
+      const mensaje = cotizacion ? `«Hola, quiero esta cotización: KOVE ${cotizacion}»`
+        : moto ? `«Hola, me interesa la KOVE ${moto}»` : '«Hola, quiero hablar con un asesor»';
       const canal = c.dataset.canal;
       // "Agendar visita" lleva al buscador de vitrinas
       if (canal === 'Visita' && !texto.textContent.startsWith('Te comunicamos')) {

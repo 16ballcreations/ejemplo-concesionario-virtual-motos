@@ -230,7 +230,9 @@
 
   // ---- Panel ----
   const colores = $('#colores-opciones');
+  let colorI = 0;
   function elegirColor(c, boton) {
+    colorI = m.colores.indexOf(c);
     [...colores.children].forEach((o) => o.setAttribute('aria-checked', String(o === boton)));
     $('#color-nombre').textContent = c.nombre;
     $('#color-nota').textContent = c.nota || '';
@@ -253,7 +255,9 @@
       b.addEventListener('click', () => elegirColor(c, b));
       colores.appendChild(b);
     });
+    colorI = 0;
     $('#color-nombre').textContent = m.colores[0].nombre;
+    $('.modo-vista').hidden = !m.piloto;
     $('#color-nota').textContent = m.colores.length > 1 ? '' : 'En Colombia se vende solo en este color.';
     $('#detalle-asesor').dataset.asesor = m.nombre;
     const b3d = $('#ver-3d');
@@ -365,6 +369,35 @@
   }
   botonPuntos.addEventListener('click', () => verPuntos(botonPuntos.getAttribute('aria-pressed') === 'true'));
 
+  // ---- Vista del piloto: el puesto de mando con la foto oficial del tablero ----
+  const piloto = $('#piloto');
+  const modos = [...document.querySelectorAll('.modo-vista [data-vista]')];
+  function verPiloto(si) {
+    const en = !!(si && m && m.piloto);
+    modos.forEach((b) => b.setAttribute('aria-pressed', String((b.dataset.vista === 'piloto') === en)));
+    seccion.querySelector('.detalle__escenario').classList.toggle('en-piloto', en);
+    piloto.hidden = !en;
+    if (!en) return;
+    const p = m.piloto;
+    mostrarPieza(null);
+    piloto.dataset.ajuste = p.ajuste || 'cover';
+    piloto.style.setProperty('--fondo', p.fondo || '#c9ced3');
+    $('#piloto-img').src = p.img;
+    $('#piloto-img').alt = `Tablero y mandos de la KOVE ${m.nombre}, foto oficial`;
+    $('#piloto-titulo').textContent = p.titulo;
+    $('#piloto-texto').textContent = p.texto;
+    const f = $('#piloto-fuente');
+    f.href = p.fuente; f.textContent = `Foto y datos: ${dominio(p.fuente)} ↗`;
+  }
+  modos.forEach((b) => b.addEventListener('click', () => verPiloto(b.dataset.vista === 'piloto')));
+
+  // Foto de la moto en el color elegido, vista de tres cuartos (para el resumen de la cotización)
+  function foto(a = 45) {
+    const antes = angulo; angulo = a;
+    const i = indice(); angulo = antes;
+    return cuadros[i] ? cuadros[i].src : '';
+  }
+
   // ---- Abrir y cerrar ----
   function abrir(cual = '450rr') {
     if (!MOTOS[cual]) return;
@@ -378,6 +411,7 @@
       llenarPanel();
       llenarFicha();
       verPuntos(true);
+      verPiloto(false);
       pista.classList.remove('oculta');
     }
     mostrarFicha(false);
@@ -411,6 +445,10 @@
     abrir, cerrar, motos: MOTOS,
     get ficha() { return m ? Object.fromEntries(Object.entries(m.ficha).map(([k, v]) => [k, v.map(([a, b]) => [a, b])])) : null; },
     get id() { return id; },
+    get moto() { return m; },
+    get color() { return colorI; },
+    elegirColor(i) { const b = colores.children[i]; if (b && m.colores[i]) elegirColor(m.colores[i], b); },
+    foto, verPiloto,
     set angulo(v) { angulo = v; tocado = true; dibujar(); },
   };
 })();

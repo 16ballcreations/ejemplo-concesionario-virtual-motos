@@ -25,3 +25,10 @@ Para verlo en local: `node herramientas/servir.mjs 4390`.
 - La 450RR gira con 320 cuadros; la 350R, la 625X y la 800X Pro con las vistas oficiales de KOVE Colombia y kovemoto.com, recortadas con `node herramientas/recortar-vistas.mjs` (`UNION=1` para el giro).
 - Los PDF del plano técnico de las cuatro motos salen con `node herramientas/pdf-plano.mjs` (o solo algunas: `... http://localhost:4390/ 350r,625x`).
 - Fotos de la galería: kovemoto.com y prensa, reducidas con `herramientas/redimensionar.mjs`. Sin licencia publicada: uso de concepto, con aviso de no afiliación.
+
+## Barra de compra
+
+- `js/compra.js`: «Cotizar» abre el resumen (moto, color, precio con el bono de reserva) y el simulador de cuotas, sin pedir datos. La tasa es ilustrativa (`TASA`, 1,8 % mes vencido). «Compartir» copia un enlace `#cotizar=<moto>-<color>-<inicial>-<plazo>-<bono>` que abre la misma cotización.
+- «Prueba de manejo» lista las vitrinas de `js/concesionarios.js` (`window.KOVE_SEDES`); «Sedes» lleva al buscador. En la demo nada se envía.
+- Vista del piloto: botón «Piloto» sobre la moto, con la foto oficial del tablero (`piloto` en `motos-base.mjs`, fotos en `media/piloto`).
+- Precio, bono y nota legal salen de kovemotocolombia.co/es/precios: no incluyen matrícula, placas ni SOAT.

@@ -17,6 +17,7 @@
       horario: 'Lun a vie 8:00–18:00 · Sáb 9:00–14:00', lat: 4.6236, lng: -74.1178 },
   ];
   const ESTADOS = { abierta: 'Abierta', obra: 'En obra', pronto: 'Próximamente', oficina: 'Solo canales en línea' };
+  window.KOVE_SEDES = SEDES; window.KOVE_ESTADOS = ESTADOS;
 
   const lista = document.getElementById('sedes');
   const buscar = document.getElementById('buscar-sede');

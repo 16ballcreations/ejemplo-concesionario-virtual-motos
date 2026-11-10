@@ -4,6 +4,15 @@ window.KOVE_MOTOS = {
   "nombre": "450RR",
   "familia": "Sport",
   "precio": "$ 36.490.000",
+  "valor": 36490000,
+  "bono": 3500000,
+  "piloto": {
+   "img": "media/piloto/450rr-tablero.webp",
+   "ajuste": "cover",
+   "titulo": "TFT a color con telemetría",
+   "texto": "Semimanillares de aluminio, modos SPORT y ECO, control de tracción y quickshifter para subir cambios. El celular se proyecta en la pantalla.",
+   "fuente": "https://www.kovemoto.com/kove-450rr"
+  },
   "eyebrow": "Sport · 4 cilindros · Mundial WorldSPB",
   "slugCo": "450rr",
   "fichaOficial": "https://kovemotocolombia.co/api/ficha-tecnica/450rr",
@@ -671,6 +680,15 @@ window.KOVE_MOTOS = {
   "nombre": "350R",
   "familia": "Naked",
   "precio": "$ 23.490.000",
+  "valor": 23490000,
+  "bono": 1000000,
+  "piloto": {
+   "img": "media/piloto/350r-tablero.webp",
+   "ajuste": "cover",
+   "titulo": "TFT a color de 5\"",
+   "texto": "Manubrio ancho de naked, asiento a 790 mm y la pantalla a color justo debajo de la vista.",
+   "fuente": "https://kovemotocolombia.co/es/modelos/350r"
+  },
   "eyebrow": "Naked · 344 cc · ciudad y carretera",
   "slugCo": "350r",
   "datos": [
@@ -1187,6 +1205,16 @@ window.KOVE_MOTOS = {
   "nombre": "625X",
   "familia": "Adventure",
   "precio": "$ 38.490.000",
+  "valor": 38490000,
+  "bono": 2500000,
+  "piloto": {
+   "img": "media/piloto/625x-tablero.webp",
+   "ajuste": "contain",
+   "fondo": "#0b0d0f",
+   "titulo": "TFT de 6,75\" inclinable",
+   "texto": "La pantalla se inclina ±20° para que no la tape el sol, proyecta el celular y avisa la presión de las llantas. Al lado: USB de carga rápida, USB-C y toma de 12 V.",
+   "fuente": "https://www.kovemoto.com/kove-625x-cn4-e5"
+  },
   "eyebrow": "Adventure · 581 cc · viaje largo",
   "slugCo": "625-x",
   "datos": [
@@ -1815,6 +1843,16 @@ window.KOVE_MOTOS = {
   "nombre": "800X Pro",
   "familia": "Adventure",
   "precio": "$ 43.990.000",
+  "valor": 43990000,
+  "bono": 2000000,
+  "piloto": {
+   "img": "media/piloto/800xpro-tablero.webp",
+   "ajuste": "contain",
+   "fondo": "#eceef1",
+   "titulo": "TFT vertical de 7\"",
+   "texto": "Pantalla vertical como en las motos de rally, con conectividad y proyección del celular, y 4 modos de manejo.",
+   "fuente": "https://kovemotocolombia.co/es/modelos/800x"
+  },
   "eyebrow": "Adventure · 799 cc · herencia de rally",
   "slugCo": "800x",
   "datos": [

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Gantari:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/estilos.css?v=202611101400">
+<link rel="stylesheet" href="css/estilos.css?v=202611101800">
 </head>
 <body>
 
@@ -101,13 +101,30 @@
       </button>
       <p class="pista-giro" id="pista-giro"><span aria-hidden="true">⟲</span> Arrastra para girarla</p>
       <div class="angulo" aria-hidden="true"><span id="angulo-aguja"></span></div>
+
+      <!-- Vista del piloto: el puesto de mando con la foto oficial del tablero -->
+      <div class="modo-vista" role="group" aria-label="Cómo ver la moto">
+        <button type="button" data-vista="giro" aria-pressed="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4h-4"/></svg>360°</button>
+        <button type="button" data-vista="piloto" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M3.5 10h6.7M13.8 10h6.7M12 14v7"/></svg>Piloto</button>
+      </div>
+      <figure class="piloto" id="piloto" hidden>
+        <img id="piloto-img" src="" alt="">
+        <figcaption>
+          <span class="piloto__eyebrow">Desde el puesto de mando</span>
+          <b id="piloto-titulo"></b>
+          <p id="piloto-texto"></p>
+          <a id="piloto-fuente" href="" target="_blank" rel="noopener"></a>
+        </figcaption>
+      </figure>
     </div>
 
     <aside class="detalle__panel">
       <button class="volver" id="volver" type="button">← Volver al salón</button>
       <p class="detalle__eyebrow" id="detalle-eyebrow"></p>
       <h2 class="detalle__titulo" id="detalle-titulo"></h2>
-      <p class="detalle__precio">Desde <b id="detalle-precio"></b> <span>precio de referencia</span></p>
+      <p class="detalle__precio">Desde <b id="detalle-precio"></b> <span>Precio de referencia. No incluye matrícula, placas ni SOAT.</span></p>
       <dl class="datos" id="detalle-datos"></dl>
       <div class="colores" role="radiogroup" aria-labelledby="t-colores">
         <p class="colores__titulo" id="t-colores">Color <b id="color-nombre">Negro</b></p>
@@ -116,13 +133,18 @@
       </div>
       <p class="detalle__nota">Toca los puntos sobre la moto para conocer cada pieza.</p>
       <div class="detalle__acciones">
-        <button class="boton" type="button" id="detalle-asesor" data-asesor="450RR">Hablar con un asesor</button>
         <button class="boton boton--linea" type="button" id="ver-ficha" aria-expanded="false">Ficha técnica completa</button>
         <button class="boton boton--linea" type="button" id="ver-contexto">Por qué elegirla</button>
         <button class="boton boton--ar" type="button" id="ver-3d" data-modelo="450rr">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l8 4.5v10l-8 4.5-8-4.5V7z"/><path d="M4 7l8 4.5L20 7M12 11.5V21"/></svg>
           Verla en tu espacio</button>
-        <a class="reservar" href="https://kovemotocolombia.co/es/reserva" target="_blank" rel="noopener">Sepárala con $ 500.000 ↗</a>
+      </div>
+      <!-- Barra de compra: siempre a la vista al fondo del panel -->
+      <div class="compra">
+        <button class="boton compra__cotizar" type="button" id="abrir-cotizar">Cotizar<span> y simular cuotas</span></button>
+        <button class="boton boton--linea" type="button" id="abrir-prueba">Prueba<span> de manejo</span></button>
+        <button class="boton boton--linea" type="button" id="ver-sedes">Sedes</button>
+        <button class="compra__asesor" type="button" id="detalle-asesor" data-asesor="450RR">o habla con un asesor</button>
       </div>
     </aside>
   </section>
@@ -241,9 +263,11 @@
       <h3 class="propuesta__sub">Cada parte del recorrido se conecta con lo que KOVE ya ofrece</h3>
       <ol class="pasos">
         <li><div><b>Entrada y salón.</b> La fachada y las motos sobre pedestales, como la Megasala de la Av. Primera de Mayo antes de abrir. En la versión final, la gama completa de seis modelos.</div></li>
-        <li><div><b>La moto a detalle.</b> Giro de 360° con las fotos oficiales de cada modelo y las piezas que la diferencian: el tetracilíndrico de la 450RR, la horquilla ajustable, la pantalla TFT.</div></li>
+        <li><div><b>La moto a detalle.</b> Giro de 360° con las fotos oficiales de cada modelo y las piezas que la diferencian: el tetracilíndrico de la 450RR, la horquilla ajustable, la pantalla TFT. Con un toque, la vista desde el puesto de mando.</div></li>
+        <li><div><b>Un modelo 3D de cada moto.</b> En la versión final, cada KOVE se modela a partir de la moto real, con más detalle que el de un configurador de marca: el mismo modelo da el giro sobre paisajes de Colombia, la vista del piloto y la moto a tamaño real en la casa con realidad aumentada.</div></li>
         <li><div><b>Ficha técnica.</b> Los mismos datos que publica kovemotocolombia.co, con medidas sobre el plano y el PDF oficial a un toque.</div></li>
-        <li><div><b>Hablar con un asesor.</b> WhatsApp de la sede con la moto ya mencionada en el mensaje, como hace hoy el sitio, y el estudio de crédito con Avanza que hoy guía un asesor.</div></li>
+        <li><div><b>Cotizar sin llenar formularios.</b> El precio con el bono de reserva y la cuota mensual a la vista desde el primer toque; la cotización se comparte con un enlace y llega al asesor ya armada, lista para el estudio de crédito.</div></li>
+        <li><div><b>Hablar con un asesor o pedir una prueba de manejo.</b> WhatsApp de la sede con la moto ya mencionada en el mensaje, como hace hoy el sitio, y la prueba de manejo en la vitrina que le quede más cerca.</div></li>
         <li><div><b>Reservar.</b> De la moto a «Sepárala con $ 500.000» sin perder el hilo: el visitante llega a la reserva sabiendo qué moto quiere.</div></li>
         <li><div><b>Encontrar la sede.</b> Cada vitrina con su estado real, dirección y cómo llegar, lista para cambiar a «Abierta» el día que abra.</div></li>
       </ol>
@@ -327,6 +351,89 @@
   </div>
 </dialog>
 
+<!-- Cotizar: resumen de lo elegido, simulador de cuotas a la vista y enlace para compartir -->
+<dialog class="cotizar" id="cotizar" aria-labelledby="cotizar-titulo">
+  <div class="cotizar__barra">
+    <button class="volver" type="button" id="cerrar-cotizar">← Volver a la moto</button>
+    <span>Tu cotización</span>
+  </div>
+  <div class="cotizar__cuerpo">
+    <section class="resumen" aria-label="Lo que elegiste">
+      <img class="resumen__foto" id="resumen-foto" src="" alt="">
+      <div class="resumen__cabeza">
+        <p class="detalle__eyebrow" id="resumen-eyebrow"></p>
+        <h2 id="cotizar-titulo"></h2>
+        <p class="resumen__color"><i id="resumen-muestra"></i>Color <b id="resumen-color"></b></p>
+      </div>
+      <dl class="resumen__precios">
+        <div><dt>Precio de referencia</dt><dd id="r-precio"></dd></div>
+        <div><dt>Bono por reservar en línea</dt><dd id="r-bono"></dd></div>
+        <div class="resumen__total"><dt>Precio reservando en línea</dt><dd id="r-total"></dd></div>
+      </dl>
+      <p class="nota-legal">Precios de referencia en pesos colombianos, publicados en kovemotocolombia.co. No incluyen matrícula, placas ni SOAT.
+        El bono aplica a reservas en línea hasta el 31 de diciembre de 2026; las entregas empiezan el 15 de marzo de 2027, en orden de reserva.</p>
+    </section>
+
+    <section class="simulador" aria-labelledby="t-simulador">
+      <h3 id="t-simulador">Simula tu cuota</h3>
+      <label class="simulador__campo" for="s-inicial">
+        <span>Cuota inicial <output id="s-inicial-v" for="s-inicial"></output></span>
+        <input type="range" id="s-inicial" min="10" max="80" step="5" value="30">
+      </label>
+      <fieldset class="simulador__plazos">
+        <legend>Plazo</legend>
+        <label><input type="radio" name="plazo" value="12"><span>12</span></label>
+        <label><input type="radio" name="plazo" value="24"><span>24</span></label>
+        <label><input type="radio" name="plazo" value="36" checked><span>36</span></label>
+        <label><input type="radio" name="plazo" value="48"><span>48</span></label>
+        <label><input type="radio" name="plazo" value="60"><span>60</span></label>
+        <small>meses</small>
+      </fieldset>
+      <label class="simulador__bono"><input type="checkbox" id="s-bono" checked> Reservo en línea y aplico el bono</label>
+      <div class="simulador__resultado" role="status">
+        <span>Cuota mensual estimada</span>
+        <b id="s-cuota"></b>
+        <small id="s-detalle"></small>
+      </div>
+      <p class="nota-legal">Cálculo ilustrativo con una tasa de 1,8 % mes vencido (23,9 % efectivo anual) y cuotas fijas. No incluye seguros ni otros cargos.
+        La tasa, el plazo y la aprobación los define la entidad financiera después del estudio de crédito.</p>
+    </section>
+
+    <div class="cotizar__acciones">
+      <button class="boton" type="button" id="enviar-cotizacion" data-asesor="">Enviar a un asesor</button>
+      <button class="boton boton--linea" type="button" id="compartir">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg>
+        Compartir esta cotización</button>
+      <a class="reservar" href="https://kovemotocolombia.co/es/reserva" target="_blank" rel="noopener">Sepárala con $ 500.000 ↗</a>
+      <p class="cotizar__estado" id="cotizar-estado" role="status"></p>
+    </div>
+  </div>
+</dialog>
+
+<!-- Prueba de manejo: vitrina y momento; la sede confirma día y hora -->
+<dialog class="asesor prueba" id="prueba" aria-labelledby="prueba-titulo">
+  <form method="dialog" class="asesor__cerrar"><button type="submit" aria-label="Cerrar">×</button></form>
+  <p class="detalle__eyebrow">Prueba de manejo</p>
+  <h2 id="prueba-titulo">Manéjala antes de decidir</h2>
+  <form class="prueba__form" id="prueba-form">
+    <fieldset>
+      <legend>Vitrina</legend>
+      <div class="prueba__sedes" id="prueba-sedes"></div>
+    </fieldset>
+    <fieldset>
+      <legend>Cuándo te queda mejor</legend>
+      <div class="prueba__franjas">
+        <label><input type="radio" name="franja" value="entre semana en la mañana" checked><span>Entre semana, mañana</span></label>
+        <label><input type="radio" name="franja" value="entre semana en la tarde"><span>Entre semana, tarde</span></label>
+        <label><input type="radio" name="franja" value="un sábado"><span>Sábado</span></label>
+      </div>
+    </fieldset>
+    <p class="prueba__requisito">Lleva tu licencia de conducción A2 vigente y tu casco. La sede te confirma el día y la hora.</p>
+    <button class="boton" type="submit">Pedir mi prueba</button>
+  </form>
+  <p class="asesor__demo" id="prueba-demo" role="status">Demo: en la versión final se piden nombre y celular, y la solicitud llega a la sede.</p>
+</dialog>
+
 <!-- Visor 3D y realidad aumentada -->
 <dialog class="visor3d" id="visor3d" aria-labelledby="visor3d-titulo">
   <div class="visor3d__barra">
@@ -376,12 +483,13 @@
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="js/motos-datos.js?v=202611101400"></script>
-<script src="js/entrada.js?v=202611101400"></script>
-<script src="js/visor3d.js?v=202611101400"></script>
-<script src="js/detalle.js?v=202611101400"></script>
-<script src="js/asesor.js?v=202611101400"></script>
-<script src="js/concesionarios.js?v=202611101400"></script>
-<script src="js/noticias.js?v=202611101400"></script>
+<script src="js/motos-datos.js?v=202611101800"></script>
+<script src="js/entrada.js?v=202611101800"></script>
+<script src="js/visor3d.js?v=202611101800"></script>
+<script src="js/detalle.js?v=202611101800"></script>
+<script src="js/compra.js?v=202611101800"></script>
+<script src="js/asesor.js?v=202611101800"></script>
+<script src="js/concesionarios.js?v=202611101800"></script>
+<script src="js/noticias.js?v=202611101800"></script>
 </body>
 </html>
