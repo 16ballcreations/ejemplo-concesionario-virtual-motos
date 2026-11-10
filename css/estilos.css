@@ -561,7 +561,7 @@ body.en-detalle .asesor-flotante { opacity: 0; pointer-events: none; }
 .vista figcaption { font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
 .vista .vista__img { width: 100%; max-width: 420px; }
 .vista__img--alta { max-width: 120px !important; }
-.vista--lado { padding-bottom: 84px; }
+.vista--lado { padding-bottom: 104px; }
 .vista--lado .vista__img { padding-left: 0; margin-left: 48px; width: calc(100% - 48px); }
 
 .lamina__extra { list-style: none; margin: 0; padding: 14px 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
