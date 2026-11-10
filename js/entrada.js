@@ -21,8 +21,8 @@
   const MOTOS = [
     { id: '625x',    nombre: '625 X',    familia: 'Adventure · 581 cc', precio: '$ 38.490.000', x: 61.3, y: 64.0, ancho: 8.6, orden: 1 },
     { id: '350r',    nombre: '350R',     familia: 'Naked · 344 cc',     precio: '$ 23.490.000', x: 40.2, y: 64.0, ancho: 8.6, orden: 2 },
-    { id: '450rr',   nombre: '450RR',    familia: 'Sport · 443 cc',     precio: '$ 36.490.000', x: 79.6, y: 82.6, ancho: 17, orden: 3 },
-    { id: '800xpro', nombre: '800X Pro', familia: 'Adventure · 799 cc', precio: '$ 43.990.000', x: 21.0, y: 81.6, ancho: 17, orden: 4 },
+    { id: '450rr',   nombre: '450RR',    familia: 'Sport · 443 cc',     precio: '$ 36.490.000', x: 80.4, y: 86.2, ancho: 17, orden: 3 },
+    { id: '800xpro', nombre: '800X Pro', familia: 'Adventure · 799 cc', precio: '$ 43.990.000', x: 20.4, y: 84.6, ancho: 17.5, orden: 4 },
   ];
 
   const $ = (s) => document.querySelector(s);
@@ -50,7 +50,7 @@
     const d = document.createElement('div');
     d.className = 'moto' + (m.orden <= 2 ? ' moto--fondo' : '');
     d.style.zIndex = String(m.orden);
-    const src = `media/motos/${m.id}.webp`;
+    const src = `media/motos/${m.id}.webp?v=2`;
     d.style.setProperty('--recorte', `url("${new URL(src, location.href).href}")`);
     d.innerHTML =
       `<img class="moto__reflejo" src="${src}" alt="" aria-hidden="true">` +
