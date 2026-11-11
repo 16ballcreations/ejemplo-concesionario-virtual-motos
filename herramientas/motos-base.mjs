@@ -219,6 +219,90 @@ export const BASE = {
       { img: 'media/galeria/800xpro/dak26-kove-matteogebbia-edophoto-img-6260.webp', titulo: 'Frenos hechos en casa', texto: 'Las pinzas radiales TAISKO las fabrica la propia KOVE y se prueban en competencia.', fuente: 'https://kovemoto.gr/pdf/800X%20PRO.pdf' },
     ],
   },
+
+  // Las dos de la portada de KOVE Colombia que faltaban: fotos y ficha de kovemotocolombia.co
+  '350rr': {
+    nombre: '350RR', familia: 'Sport', precio: '$ 25.490.000',
+    valor: 25490000, bono: 1500000,
+    eyebrow: 'Sport · 344 cc · de la familia campeona',
+    slugCo: '350rr', fichaOficial: 'https://kovemotocolombia.co/api/ficha-tecnica/350rr',
+    datos: [['Motor', '2 cilindros · 344 cc'], ['Potencia', '46,9 HP a 11.500 rpm'], ['Velocidad máx.', '190 km/h'], ['Peso', '151 kg']],
+    colores: [
+      { nombre: 'Blanco', c: '#eef0f1' },
+      { nombre: 'Rojo', c: '#b3121b', nota: 'Demo: KOVE Colombia aún no publica las fotos de la roja; en la versión final gira en rojo.' },
+    ],
+    giro: { tipo: 'vistas', ruta: 'media/giro/350rr', ancho: 967, alto: 698,
+      vistas: [[45, '01.webp'], [90, '02.webp'], [135, '03.webp'], [180, '04.webp'], [225, '05.webp'], [270, '06.webp'], [315, '07.webp'], [0, '08.webp']] },
+    piezas: [
+      { id: 'motor', titulo: 'Bicilíndrico · 344 cc', texto: 'El mismo bicilíndrico de la naked 350R, con 46,9 HP y 190 km/h de punta gracias al carenado completo.',
+        vistas: { 45: [44, 55], 90: [47, 58], 270: [53, 58], 315: [56, 55] } },
+      { id: 'frenos', titulo: 'Doble disco de 320 mm', texto: 'Doble disco delantero de 320 mm con ABS de doble canal y horquilla invertida.',
+        vistas: { 45: [73, 68], 90: [82, 64], 270: [17, 64], 315: [20, 68] } },
+      { id: 'tablero', titulo: 'TFT digital y full LED', texto: 'Tablero TFT digital, farola, stop y direccionales LED.',
+        vistas: { 45: [61, 16], 90: [77, 17], 270: [26, 17], 315: [37, 16], 0: [50, 18] } },
+    ],
+    lamina: {
+      specs: [['Motor', 'Bicilíndrico, DOHC, 8 válvulas'], ['Cilindraje', '344 cc'], ['Potencia', '46,94 HP @ 11.500 rpm'], ['Torque', '32,2 Nm @ 9.000 rpm'],
+        ['Transmisión', '6 velocidades'], ['Peso', '151 kg'], ['Tanque', '13 L'], ['Vel. máxima', '190 km/h']],
+      sello: 'Sport · de la familia<br>campeona del mundo', color: 'Blanco',
+      principal: { img: 'media/plano/350rr/01.webp', largo: '1.975 mm', alto: '1.100 mm' },
+      vistas: [
+        { titulo: 'Frente', img: 'media/plano/350rr/08.webp', alta: true, cotas: [['h', 'left:0;right:0;bottom:-11%', '743 mm', 'ancho']] },
+        { titulo: 'Lado', img: 'media/plano/350rr/02.webp', lado: true, cotas: [['v', 'top:38%;bottom:10%;left:-5%', '790 mm', 'asiento'], ['h', 'left:16%;right:16%;bottom:-11%', '1.370 mm', 'entre ejes'], ['h', 'left:0;right:0;bottom:calc(-11% - 44px)', '1.975 mm', 'largo']] },
+        { titulo: 'Trasera', img: 'media/plano/350rr/04.webp', alta: true, cotas: [['h', 'left:0;right:0;bottom:-11%', '743 mm', 'ancho']] },
+      ],
+      extra: [['cilindraje', 'Cilindraje', '344 cc bicilíndrico'], ['potencia', 'Máxima potencia', '46,94 HP @ 11.500 rpm'], ['torque', 'Torque máximo', '32,2 Nm @ 9.000 rpm'],
+        ['tanque', 'Tanque', '13 L'], ['llantas', 'Llantas', '110/70 R17 · 150/60 R17'],
+        ['suspension', 'Suspensión', 'Horquilla invertida USD · monoshock central'], ['frenos', 'Frenos', 'Doble disco 320 mm · disco trasero · ABS doble canal']],
+      numero: '350RR-001',
+    },
+    galeria: [
+      { img: 'media/galeria/350r/2025-round08-jerez-worldssp300-sunday-4226-1.webp', titulo: 'La moto de la que salió la campeona', texto: 'La máquina con la que KOVE ganó el Mundial WorldSSP300 2025 deriva de la 350RR.', fuente: 'https://www.visordown.com/news/new-kove-350rr-jerez-revealed-road-version-supersport-300-motorcycle' },
+      { titulo: 'Deportiva para todos los días', texto: '151 kg, asiento a 790 mm y 2 años o 30.000 km de garantía con Carrera Motos.', fuente: 'https://kovemotocolombia.co/es/modelos/350rr' },
+    ],
+  },
+
+  '450rally': {
+    nombre: '450 Rally', familia: 'Rally', precio: '$ 33.990.000',
+    valor: 33990000, bono: 2000000,
+    eyebrow: 'Rally · 449 cc · nacida en el Dakar',
+    slugCo: '450-rally', fichaOficial: 'https://kovemotocolombia.co/api/ficha-tecnica/450-rally',
+    datos: [['Motor', '1 cilindro · 449 cc'], ['Potencia', '51,6 HP a 8.500 rpm'], ['Tanque', '30–32 L en 3 tanques'], ['Peso', '145 kg']],
+    colores: [{ nombre: 'Rally', c: '#c4232f' }],
+    giro: { tipo: 'vistas', ruta: 'media/giro/450rally', ancho: 1200, alto: 954,
+      vistas: [[45, '01.webp'], [90, '02.webp'], [315, '03.webp'], [0, '04.webp']] },
+    piezas: [
+      { id: 'motor', titulo: 'Monocilíndrico · 449 cc', texto: '51,6 HP y 40 Nm con inyección Bosch y enfriador de aceite, para horas de destapado.',
+        vistas: { 45: [40, 56], 90: [42, 58], 315: [60, 56] } },
+      { id: 'tanques', titulo: 'Tres tanques, 30–32 L', texto: 'Tres tanques combinados, como en las motos de rally: autonomía para ir lejos de la bomba.',
+        vistas: { 45: [48, 33], 90: [58, 36], 315: [50, 33] } },
+      { id: 'suspension', titulo: 'Horquilla de 49 mm ajustable', texto: 'Horquilla invertida de 49 mm y mono con depósito, ambos totalmente ajustables, y 310 mm de despeje.',
+        vistas: { 45: [60, 46], 90: [74, 46], 315: [38, 46] } },
+      { id: 'rines', titulo: 'Rines 21" y 18"', texto: 'La medida de las motos de rally: 90/90-21 adelante y 140/80-18 atrás, con ABS desconectable.',
+        vistas: { 45: [67, 76], 90: [84, 66], 315: [31, 76] } },
+    ],
+    lamina: {
+      specs: [['Motor', 'Monocilíndrico, DOHC, 4 válvulas'], ['Cilindraje', '449 cc'], ['Potencia', '51,6 HP @ 8.500 rpm'], ['Torque', '40 Nm @ 7.000 rpm'],
+        ['Transmisión', '6 velocidades'], ['Peso', '145 kg aprox.'], ['Tanque', '30–32 L'], ['Vel. máxima', '170 km/h']],
+      sello: 'Rally · nacida<br>en el Dakar', color: 'Rally',
+      principal: { img: 'media/plano/450rally/01.webp', largo: '2.190 mm', alto: '1.390 mm' },
+      vistas: [
+        { titulo: 'Frente', img: 'media/plano/450rally/04.webp', alta: true, cotas: [['h', 'left:0;right:0;bottom:-11%', '805 mm', 'ancho']] },
+        { titulo: 'Lado', img: 'media/plano/450rally/02.webp', lado: true, cotas: [['v', 'top:30%;bottom:8%;left:-5%', '960 mm', 'asiento'], ['h', 'left:17%;right:17%;bottom:-11%', '1.490 mm', 'entre ejes'], ['h', 'left:0;right:0;bottom:calc(-11% - 44px)', '2.190 mm', 'largo']] },
+        { titulo: 'Tres cuartos', img: 'media/plano/450rally/03.webp', cotas: [] },
+      ],
+      extra: [['cilindraje', 'Cilindraje', '449 cc monocilíndrico'], ['potencia', 'Máxima potencia', '51,6 HP @ 8.500 rpm'], ['torque', 'Torque máximo', '40 Nm @ 7.000 rpm'],
+        ['tanque', 'Tanque', '30–32 L en tres tanques'], ['llantas', 'Llantas', '90/90-21 · 140/80-18'],
+        ['suspension', 'Suspensión', 'Invertida Ø49 mm y mono con depósito, ajustables'], ['frenos', 'Frenos', 'Disco trasero 240 mm · ABS desconectable']],
+      numero: '450RA-001',
+    },
+    galeria: [
+      { img: 'media/galeria/450rally/287-2493.webp', titulo: 'Tres tanques para ir lejos', texto: 'Entre 30 y 32 litros repartidos en tres tanques, como en las motos que corren el Dakar.', fuente: 'https://kovemotocolombia.co/es/modelos/450-rally' },
+      { img: 'media/galeria/450rally/287-2495.webp', titulo: 'Hecha para salirse del mapa', texto: '310 mm de despeje, suspensión totalmente ajustable y rines 21/18.', fuente: 'https://kovemotocolombia.co/es/modelos/450-rally' },
+      { img: 'media/galeria/450rally/287-2494.webp', titulo: 'Herencia del Dakar', texto: 'KOVE debutó en el Dakar 2023 con tres motos y las tres terminaron. En 2026 ganó tres etapas en Rally2 con su 450 de rally.', fuente: 'https://www.kovemoto.com/kove-800x-pro' },
+      { img: 'media/galeria/450rally/287-2496.webp', titulo: 'Garantía de familia Rally', texto: '1 año, 10.000 km o 200 horas de uso con Carrera Motos, lo que ocurra primero.', fuente: 'https://kovemotocolombia.co/es/modelos/450-rally' },
+    ],
+  },
 };
 
 // Filas de la investigación que no van en la ficha pública

@@ -283,7 +283,7 @@
           <p class="lamina__sub">Plano técnico</p>
         </div>
         <dl class="lamina__specs">${l.specs.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
-        <div class="lamina__sello"><p>${l.sello}</p><p class="lamina__color"><span aria-hidden="true"></span>${esc(l.color)}</p></div>
+        <div class="lamina__sello"><p>${l.sello}</p><p class="lamina__color"><span aria-hidden="true" style="background:${m.colores[0].c}"></span>${esc(l.color)}</p></div>
       </header>
       <figure class="lamina__principal"><div class="vista__img">
         <img src="${l.principal.img}" alt="${esc(m.nombre)} vista de tres cuartos">

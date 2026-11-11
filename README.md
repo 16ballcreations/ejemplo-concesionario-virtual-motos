@@ -12,6 +12,7 @@ Publicado en https://16ballcreations.github.io/ejemplo-concesionario-virtual-mot
 
 Sin modelos 3D: el giro de la 450RR son 320 cuadros (`media/giro/450rr`) normalizados con `herramientas/exportar-giro.py`.
 La entrada son 190 cuadros (`media/entrada`) del video de transición fachada → salón; el primero y el último salen de las imágenes 2K de las que se hizo el video: `py -3 herramientas/exportar-entrada.py` (fuentes en `fuentes/entrada-v3`).
+Al terminar el video el salón queda de fondo (desenfocado) y las seis motos aparecen en una galería en arco, cada una sobre un pedestal dibujado con CSS y mirando hacia el centro. Las fotos están en `media/salon` (recortadas al contorno, sin sombra); posiciones y tamaños en `MOTOS` de `js/entrada.js`. En el teléfono la galería pasa a una moto al centro con las vecinas asomadas. La 350RR y la 450 Rally salen de la portada de kovemotocolombia.co (fotos y ficha).
 La fachada, el salón y la entrada se generaron con IA (Artlist). Las fuentes pesadas (`fuentes/`) no van al repo.
 
 El modelo 3D de la 450RR (`media/3d/450rr.glb`, visor en `js/visor3d.js`) es una prueba generada con IA desde una foto oficial; se deja a tamaño real con `node herramientas/escalar-glb.mjs <entrada.glb> <salida.glb> 2.015`.
@@ -24,7 +25,7 @@ Para verlo en local: `node herramientas/servir.mjs 4390`.
 
 - `js/motos-datos.js` se genera con `node herramientas/datos-motos.mjs`: une lo escrito a mano en `herramientas/motos-base.mjs` (panel, puntos sobre la moto, plano técnico y galería «Por qué elegirla») con la ficha investigada y con fuentes de `fuentes/investigacion/motos.json` (fuera del repo).
 - La 450RR gira con 320 cuadros; la 350R, la 625X y la 800X Pro con las vistas oficiales de KOVE Colombia y kovemoto.com, recortadas con `node herramientas/recortar-vistas.mjs` (`UNION=1` para el giro).
-- Los PDF del plano técnico de las cuatro motos salen con `node herramientas/pdf-plano.mjs` (o solo algunas: `... http://localhost:4390/ 350r,625x`).
+- Los PDF del plano técnico de las seis motos salen con `node herramientas/pdf-plano.mjs` (o solo algunas: `... http://localhost:4390/ 350r,625x`).
 - Fotos de la galería: kovemoto.com y prensa, reducidas con `herramientas/redimensionar.mjs`. Sin licencia publicada: uso de concepto, con aviso de no afiliación.
 
 ## Barra de compra

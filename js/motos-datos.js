@@ -2444,6 +2444,871 @@ window.KOVE_MOTOS = {
    ]
   },
   "completitud": "Alta. Ficha Colombia + ficha global + ficha descargable del importador griego (VER.09.2025) + spec de motorcycle.com (EE. UU.) + pruebas de ADB (Australia) y Motoplanete (Francia). Falta confirmar si en Colombia trae quickshifter y control crucero, y los colores."
+ },
+ "350rr": {
+  "nombre": "350RR",
+  "familia": "Sport",
+  "precio": "$ 25.490.000",
+  "valor": 25490000,
+  "bono": 1500000,
+  "eyebrow": "Sport · 344 cc · de la familia campeona",
+  "slugCo": "350rr",
+  "fichaOficial": "https://kovemotocolombia.co/api/ficha-tecnica/350rr",
+  "datos": [
+   [
+    "Motor",
+    "2 cilindros · 344 cc"
+   ],
+   [
+    "Potencia",
+    "46,9 HP a 11.500 rpm"
+   ],
+   [
+    "Velocidad máx.",
+    "190 km/h"
+   ],
+   [
+    "Peso",
+    "151 kg"
+   ]
+  ],
+  "colores": [
+   {
+    "nombre": "Blanco",
+    "c": "#eef0f1"
+   },
+   {
+    "nombre": "Rojo",
+    "c": "#b3121b",
+    "nota": "Demo: KOVE Colombia aún no publica las fotos de la roja; en la versión final gira en rojo."
+   }
+  ],
+  "giro": {
+   "tipo": "vistas",
+   "ruta": "media/giro/350rr",
+   "ancho": 967,
+   "alto": 698,
+   "vistas": [
+    [
+     45,
+     "01.webp"
+    ],
+    [
+     90,
+     "02.webp"
+    ],
+    [
+     135,
+     "03.webp"
+    ],
+    [
+     180,
+     "04.webp"
+    ],
+    [
+     225,
+     "05.webp"
+    ],
+    [
+     270,
+     "06.webp"
+    ],
+    [
+     315,
+     "07.webp"
+    ],
+    [
+     0,
+     "08.webp"
+    ]
+   ]
+  },
+  "piezas": [
+   {
+    "id": "motor",
+    "titulo": "Bicilíndrico · 344 cc",
+    "texto": "El mismo bicilíndrico de la naked 350R, con 46,9 HP y 190 km/h de punta gracias al carenado completo.",
+    "vistas": {
+     "45": [
+      44,
+      55
+     ],
+     "90": [
+      47,
+      58
+     ],
+     "270": [
+      53,
+      58
+     ],
+     "315": [
+      56,
+      55
+     ]
+    }
+   },
+   {
+    "id": "frenos",
+    "titulo": "Doble disco de 320 mm",
+    "texto": "Doble disco delantero de 320 mm con ABS de doble canal y horquilla invertida.",
+    "vistas": {
+     "45": [
+      73,
+      68
+     ],
+     "90": [
+      82,
+      64
+     ],
+     "270": [
+      17,
+      64
+     ],
+     "315": [
+      20,
+      68
+     ]
+    }
+   },
+   {
+    "id": "tablero",
+    "titulo": "TFT digital y full LED",
+    "texto": "Tablero TFT digital, farola, stop y direccionales LED.",
+    "vistas": {
+     "0": [
+      50,
+      18
+     ],
+     "45": [
+      61,
+      16
+     ],
+     "90": [
+      77,
+      17
+     ],
+     "270": [
+      26,
+      17
+     ],
+     "315": [
+      37,
+      16
+     ]
+    }
+   }
+  ],
+  "lamina": {
+   "specs": [
+    [
+     "Motor",
+     "Bicilíndrico, DOHC, 8 válvulas"
+    ],
+    [
+     "Cilindraje",
+     "344 cc"
+    ],
+    [
+     "Potencia",
+     "46,94 HP @ 11.500 rpm"
+    ],
+    [
+     "Torque",
+     "32,2 Nm @ 9.000 rpm"
+    ],
+    [
+     "Transmisión",
+     "6 velocidades"
+    ],
+    [
+     "Peso",
+     "151 kg"
+    ],
+    [
+     "Tanque",
+     "13 L"
+    ],
+    [
+     "Vel. máxima",
+     "190 km/h"
+    ]
+   ],
+   "sello": "Sport · de la familia<br>campeona del mundo",
+   "color": "Blanco",
+   "principal": {
+    "img": "media/plano/350rr/01.webp",
+    "largo": "1.975 mm",
+    "alto": "1.100 mm"
+   },
+   "vistas": [
+    {
+     "titulo": "Frente",
+     "img": "media/plano/350rr/08.webp",
+     "alta": true,
+     "cotas": [
+      [
+       "h",
+       "left:0;right:0;bottom:-11%",
+       "743 mm",
+       "ancho"
+      ]
+     ]
+    },
+    {
+     "titulo": "Lado",
+     "img": "media/plano/350rr/02.webp",
+     "lado": true,
+     "cotas": [
+      [
+       "v",
+       "top:38%;bottom:10%;left:-5%",
+       "790 mm",
+       "asiento"
+      ],
+      [
+       "h",
+       "left:16%;right:16%;bottom:-11%",
+       "1.370 mm",
+       "entre ejes"
+      ],
+      [
+       "h",
+       "left:0;right:0;bottom:calc(-11% - 44px)",
+       "1.975 mm",
+       "largo"
+      ]
+     ]
+    },
+    {
+     "titulo": "Trasera",
+     "img": "media/plano/350rr/04.webp",
+     "alta": true,
+     "cotas": [
+      [
+       "h",
+       "left:0;right:0;bottom:-11%",
+       "743 mm",
+       "ancho"
+      ]
+     ]
+    }
+   ],
+   "extra": [
+    [
+     "cilindraje",
+     "Cilindraje",
+     "344 cc bicilíndrico"
+    ],
+    [
+     "potencia",
+     "Máxima potencia",
+     "46,94 HP @ 11.500 rpm"
+    ],
+    [
+     "torque",
+     "Torque máximo",
+     "32,2 Nm @ 9.000 rpm"
+    ],
+    [
+     "tanque",
+     "Tanque",
+     "13 L"
+    ],
+    [
+     "llantas",
+     "Llantas",
+     "110/70 R17 · 150/60 R17"
+    ],
+    [
+     "suspension",
+     "Suspensión",
+     "Horquilla invertida USD · monoshock central"
+    ],
+    [
+     "frenos",
+     "Frenos",
+     "Doble disco 320 mm · disco trasero · ABS doble canal"
+    ]
+   ],
+   "numero": "350RR-001"
+  },
+  "galeria": [
+   {
+    "img": "media/galeria/350r/2025-round08-jerez-worldssp300-sunday-4226-1.webp",
+    "titulo": "La moto de la que salió la campeona",
+    "texto": "La máquina con la que KOVE ganó el Mundial WorldSSP300 2025 deriva de la 350RR.",
+    "fuente": "https://www.visordown.com/news/new-kove-350rr-jerez-revealed-road-version-supersport-300-motorcycle"
+   },
+   {
+    "titulo": "Deportiva para todos los días",
+    "texto": "151 kg, asiento a 790 mm y 2 años o 30.000 km de garantía con Carrera Motos.",
+    "fuente": "https://kovemotocolombia.co/es/modelos/350rr"
+   }
+  ],
+  "ficha": {
+   "Motor": [
+    [
+     "Tipo",
+     "Bicilíndrico en línea, DOHC, 4 tiempos, 8 válvulas, refrigeración líquida",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Cilindraje",
+     "344 cc",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Potencia máxima",
+     "46,94 HP @ 11.500 rpm (34–35 kW)",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Torque máximo",
+     "32,2 Nm @ 9.000 rpm",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Transmisión",
+     "Manual de 6 velocidades",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Alimentación",
+     "Inyección electrónica (EFI)",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Velocidad máxima",
+     "190 km/h",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ]
+   ],
+   "Chasis": [
+    [
+     "Suspensión delantera",
+     "Horquilla invertida USD hidráulica",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Suspensión trasera",
+     "Monoshock central",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Freno delantero",
+     "Doble disco 320 mm con ABS",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Freno trasero",
+     "Disco con ABS",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "ABS",
+     "Doble canal",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Llanta delantera",
+     "110/70 R17",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Llanta trasera",
+     "150/60 R17",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ]
+   ],
+   "Dimensiones y pesos": [
+    [
+     "Largo",
+     "1.975 mm",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Ancho",
+     "743 mm",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Alto",
+     "1.100 mm",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Distancia entre ejes",
+     "1.370 mm",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Despeje",
+     "135 mm",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Altura del asiento",
+     "790 mm",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Peso",
+     "151 kg",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Tanque",
+     "13 L",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ]
+   ],
+   "Electrónica": [
+    [
+     "Tablero",
+     "TFT digital",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ],
+    [
+     "Luces",
+     "Full LED",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ]
+   ],
+   "Garantía": [
+    [
+     "Garantía",
+     "2 años o 30.000 km, lo que ocurra primero",
+     "https://kovemotocolombia.co/es/modelos/350rr"
+    ]
+   ]
+  },
+  "completitud": "Básica: solo la ficha de KOVE Colombia."
+ },
+ "450rally": {
+  "nombre": "450 Rally",
+  "familia": "Rally",
+  "precio": "$ 33.990.000",
+  "valor": 33990000,
+  "bono": 2000000,
+  "eyebrow": "Rally · 449 cc · nacida en el Dakar",
+  "slugCo": "450-rally",
+  "fichaOficial": "https://kovemotocolombia.co/api/ficha-tecnica/450-rally",
+  "datos": [
+   [
+    "Motor",
+    "1 cilindro · 449 cc"
+   ],
+   [
+    "Potencia",
+    "51,6 HP a 8.500 rpm"
+   ],
+   [
+    "Tanque",
+    "30–32 L en 3 tanques"
+   ],
+   [
+    "Peso",
+    "145 kg"
+   ]
+  ],
+  "colores": [
+   {
+    "nombre": "Rally",
+    "c": "#c4232f"
+   }
+  ],
+  "giro": {
+   "tipo": "vistas",
+   "ruta": "media/giro/450rally",
+   "ancho": 1200,
+   "alto": 954,
+   "vistas": [
+    [
+     45,
+     "01.webp"
+    ],
+    [
+     90,
+     "02.webp"
+    ],
+    [
+     315,
+     "03.webp"
+    ],
+    [
+     0,
+     "04.webp"
+    ]
+   ]
+  },
+  "piezas": [
+   {
+    "id": "motor",
+    "titulo": "Monocilíndrico · 449 cc",
+    "texto": "51,6 HP y 40 Nm con inyección Bosch y enfriador de aceite, para horas de destapado.",
+    "vistas": {
+     "45": [
+      40,
+      56
+     ],
+     "90": [
+      42,
+      58
+     ],
+     "315": [
+      60,
+      56
+     ]
+    }
+   },
+   {
+    "id": "tanques",
+    "titulo": "Tres tanques, 30–32 L",
+    "texto": "Tres tanques combinados, como en las motos de rally: autonomía para ir lejos de la bomba.",
+    "vistas": {
+     "45": [
+      48,
+      33
+     ],
+     "90": [
+      58,
+      36
+     ],
+     "315": [
+      50,
+      33
+     ]
+    }
+   },
+   {
+    "id": "suspension",
+    "titulo": "Horquilla de 49 mm ajustable",
+    "texto": "Horquilla invertida de 49 mm y mono con depósito, ambos totalmente ajustables, y 310 mm de despeje.",
+    "vistas": {
+     "45": [
+      60,
+      46
+     ],
+     "90": [
+      74,
+      46
+     ],
+     "315": [
+      38,
+      46
+     ]
+    }
+   },
+   {
+    "id": "rines",
+    "titulo": "Rines 21\" y 18\"",
+    "texto": "La medida de las motos de rally: 90/90-21 adelante y 140/80-18 atrás, con ABS desconectable.",
+    "vistas": {
+     "45": [
+      67,
+      76
+     ],
+     "90": [
+      84,
+      66
+     ],
+     "315": [
+      31,
+      76
+     ]
+    }
+   }
+  ],
+  "lamina": {
+   "specs": [
+    [
+     "Motor",
+     "Monocilíndrico, DOHC, 4 válvulas"
+    ],
+    [
+     "Cilindraje",
+     "449 cc"
+    ],
+    [
+     "Potencia",
+     "51,6 HP @ 8.500 rpm"
+    ],
+    [
+     "Torque",
+     "40 Nm @ 7.000 rpm"
+    ],
+    [
+     "Transmisión",
+     "6 velocidades"
+    ],
+    [
+     "Peso",
+     "145 kg aprox."
+    ],
+    [
+     "Tanque",
+     "30–32 L"
+    ],
+    [
+     "Vel. máxima",
+     "170 km/h"
+    ]
+   ],
+   "sello": "Rally · nacida<br>en el Dakar",
+   "color": "Rally",
+   "principal": {
+    "img": "media/plano/450rally/01.webp",
+    "largo": "2.190 mm",
+    "alto": "1.390 mm"
+   },
+   "vistas": [
+    {
+     "titulo": "Frente",
+     "img": "media/plano/450rally/04.webp",
+     "alta": true,
+     "cotas": [
+      [
+       "h",
+       "left:0;right:0;bottom:-11%",
+       "805 mm",
+       "ancho"
+      ]
+     ]
+    },
+    {
+     "titulo": "Lado",
+     "img": "media/plano/450rally/02.webp",
+     "lado": true,
+     "cotas": [
+      [
+       "v",
+       "top:30%;bottom:8%;left:-5%",
+       "960 mm",
+       "asiento"
+      ],
+      [
+       "h",
+       "left:17%;right:17%;bottom:-11%",
+       "1.490 mm",
+       "entre ejes"
+      ],
+      [
+       "h",
+       "left:0;right:0;bottom:calc(-11% - 44px)",
+       "2.190 mm",
+       "largo"
+      ]
+     ]
+    },
+    {
+     "titulo": "Tres cuartos",
+     "img": "media/plano/450rally/03.webp",
+     "cotas": []
+    }
+   ],
+   "extra": [
+    [
+     "cilindraje",
+     "Cilindraje",
+     "449 cc monocilíndrico"
+    ],
+    [
+     "potencia",
+     "Máxima potencia",
+     "51,6 HP @ 8.500 rpm"
+    ],
+    [
+     "torque",
+     "Torque máximo",
+     "40 Nm @ 7.000 rpm"
+    ],
+    [
+     "tanque",
+     "Tanque",
+     "30–32 L en tres tanques"
+    ],
+    [
+     "llantas",
+     "Llantas",
+     "90/90-21 · 140/80-18"
+    ],
+    [
+     "suspension",
+     "Suspensión",
+     "Invertida Ø49 mm y mono con depósito, ajustables"
+    ],
+    [
+     "frenos",
+     "Frenos",
+     "Disco trasero 240 mm · ABS desconectable"
+    ]
+   ],
+   "numero": "450RA-001"
+  },
+  "galeria": [
+   {
+    "img": "media/galeria/450rally/287-2493.webp",
+    "titulo": "Tres tanques para ir lejos",
+    "texto": "Entre 30 y 32 litros repartidos en tres tanques, como en las motos que corren el Dakar.",
+    "fuente": "https://kovemotocolombia.co/es/modelos/450-rally"
+   },
+   {
+    "img": "media/galeria/450rally/287-2495.webp",
+    "titulo": "Hecha para salirse del mapa",
+    "texto": "310 mm de despeje, suspensión totalmente ajustable y rines 21/18.",
+    "fuente": "https://kovemotocolombia.co/es/modelos/450-rally"
+   },
+   {
+    "img": "media/galeria/450rally/287-2494.webp",
+    "titulo": "Herencia del Dakar",
+    "texto": "KOVE debutó en el Dakar 2023 con tres motos y las tres terminaron. En 2026 ganó tres etapas en Rally2 con su 450 de rally.",
+    "fuente": "https://www.kovemoto.com/kove-800x-pro"
+   },
+   {
+    "img": "media/galeria/450rally/287-2496.webp",
+    "titulo": "Garantía de familia Rally",
+    "texto": "1 año, 10.000 km o 200 horas de uso con Carrera Motos, lo que ocurra primero.",
+    "fuente": "https://kovemotocolombia.co/es/modelos/450-rally"
+   }
+  ],
+  "ficha": {
+   "Motor": [
+    [
+     "Tipo",
+     "Monocilíndrico, 4 tiempos, DOHC, 4 válvulas",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Cilindraje",
+     "449 cc",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Potencia máxima",
+     "51,6 HP @ 8.500 rpm",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Torque máximo",
+     "40 Nm @ 7.000 rpm",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Embrague",
+     "Multidisco en baño de aceite, por cable",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Transmisión",
+     "6 velocidades",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Alimentación",
+     "Inyección electrónica (EFI Bosch)",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Refrigeración",
+     "Líquida + enfriador de aceite",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Velocidad máxima",
+     "170 km/h",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ]
+   ],
+   "Chasis": [
+    [
+     "Suspensión delantera",
+     "Horquilla invertida 49 mm totalmente ajustable",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Suspensión trasera",
+     "Monoamortiguador con depósito, totalmente ajustable",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Freno trasero",
+     "Disco 240 mm, pinza de 1 pistón",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "ABS",
+     "Sí, desconectable",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Llanta delantera",
+     "90/90-21",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Llanta trasera",
+     "140/80-18",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ]
+   ],
+   "Dimensiones y pesos": [
+    [
+     "Largo",
+     "2.190 mm",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Ancho",
+     "805 mm",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Alto",
+     "1.390 mm",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Distancia entre ejes",
+     "1.490 mm",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Despeje",
+     "310 mm",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Altura del asiento",
+     "960 mm",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Peso",
+     "145 kg en orden de marcha (aprox.)",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ],
+    [
+     "Tanque",
+     "30–32 L en tres tanques",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ]
+   ],
+   "Electrónica": [
+    [
+     "Tablero",
+     "TFT con conectividad (Bluetooth, navegación opcional)",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ]
+   ],
+   "Garantía": [
+    [
+     "Garantía",
+     "1 año, 10.000 km o 200 horas de uso",
+     "https://kovemotocolombia.co/es/modelos/450-rally"
+    ]
+   ]
+  },
+  "completitud": "Básica: solo la ficha de KOVE Colombia."
  }
 };
 window.KOVE_ICONOS = {"cilindraje":"<path d=\"M10 4h12v6H10zM12 10v8h8v-8M16 18v5M12 23h8v5h-8z\"/>","potencia":"<path d=\"M18 3L7 18h8l-2 11 12-16h-8z\"/>","torque":"<path d=\"M26 16a10 10 0 1 1-3-7.1M26 4v6h-6\"/><circle cx=\"16\" cy=\"16\" r=\"3\"/>","tanque":"<path d=\"M8 28V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v22M6 28h16M20 11h3a2 2 0 0 1 2 2v9a2 2 0 0 0 4 0V12l-4-4M11 9h6\"/>","llantas":"<circle cx=\"16\" cy=\"16\" r=\"12\"/><circle cx=\"16\" cy=\"16\" r=\"3\"/><path d=\"M16 4v9M16 19v9M4 16h9M19 16h9\"/>","suspension":"<path d=\"M16 3v5M16 24v5M11 8h10v16H11zM11 12l10 3M11 16l10 3M11 20l10 3\"/>","frenos":"<circle cx=\"16\" cy=\"16\" r=\"12\"/><circle cx=\"16\" cy=\"16\" r=\"5\"/><path d=\"M9 8l2 2M23 8l-2 2M9 24l2-2M23 24l-2-2\"/>","peso":"<path d=\"M10 10h12l4 18H6zM13 10a3 3 0 0 1 6 0\"/>","ruta":"<path d=\"M6 28c0-6 6-6 6-12S6 10 6 4M26 28c0-6-6-6-6-12s6-6 6-12M16 6v3M16 14v4M16 23v3\"/>"};
